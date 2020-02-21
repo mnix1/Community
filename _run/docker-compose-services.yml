@@ -1,0 +1,87 @@
+version: '3'
+services:
+  registry-primary:
+    image: mnix-game-registry:latest
+    expose:
+      - "8761"
+    ports:
+      - 8761:8761
+    environment:
+      - JAVA_OPTS=
+        -DHOST=registry-primary
+        -DEUREKA_SERVER=http://registry-primary:8761/eureka,http://registry-secondary:8761/eureka
+    deploy:
+      resources:
+        limits:
+          memory: 256M
+    depends_on:
+      - registry-secondary
+  registry-secondary:
+    image: mnix-game-registry:latest
+    expose:
+      - "8761"
+    ports:
+      - 8762:8761
+    environment:
+      - JAVA_OPTS=
+        -DHOST=registry-secondary
+        -DEUREKA_SERVER=http://registry-primary:8761/eureka,http://registry-secondary:8761/eureka
+    deploy:
+      resources:
+        limits:
+          memory: 256M
+  gateway:
+    image: mnix-game-gateway:latest
+    ports:
+      - "127.0.0.1:8080:8080"
+    depends_on:
+      - registry-primary
+    environment:
+      - JAVA_OPTS=
+        -DEUREKA_SERVER=http://registry-primary:8761/eureka,http://registry-secondary:8761/eureka
+    deploy:
+      resources:
+        limits:
+          memory: 256M
+  presenter:
+    image: mnix-game-presenter:latest
+    expose:
+      - "9020"
+    depends_on:
+      - registry-primary
+    environment:
+      - JAVA_OPTS=
+        -DEUREKA_SERVER=http://registry-primary:8761/eureka,http://registry-secondary:8761/eureka
+    deploy:
+      replicas: 2
+      resources:
+        limits:
+          memory: 256M
+  stats:
+    image: mnix-game-stats:latest
+    expose:
+      - "9010"
+    depends_on:
+      - registry-primary
+    environment:
+      - JAVA_OPTS=
+        -DEUREKA_SERVER=http://registry-primary:8761/eureka,http://registry-secondary:8761/eureka
+    deploy:
+      replicas: 3
+      resources:
+        limits:
+          memory: 256M
+  simple:
+    image: mnix-game-simple:latest
+    expose:
+      - "9090"
+    depends_on:
+      - registry-primary
+    environment:
+      - JAVA_OPTS=
+        -DEUREKA_SERVER=http://registry-primary:8761/eureka,http://registry-secondary:8761/eureka
+    deploy:
+      replicas: 3
+      resources:
+        limits:
+          memory: 256M

@@ -1,0 +1,39 @@
+spring:
+  application:
+    name: friend
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: http://host.docker.internal:3000/auth/realms/local/protocol/openid-connect/certs
+  session:
+    store-type: redis
+  redis:
+    host: host.docker.internal
+  rabbitmq:
+    host: host.docker.internal
+  datasource:
+    url: jdbc:mysql://host.docker.internal:3306
+    username: root
+    password: root
+server:
+  port: 9020
+
+info:
+  app:
+    name: ${spring.application.name}
+
+eureka:
+  client:
+    registerWithEureka: true
+    serviceUrl:
+      defaultZone: ${EUREKA_SERVER:http://localhost:8761/eureka}
+    healthcheck:
+      enabled: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include:
+          - health

@@ -1,0 +1,30 @@
+spring:
+  application:
+    name: stats
+  rabbitmq:
+    host: host.docker.internal
+messaging:
+  exchange: api-requests
+  queue: stats
+
+server:
+  port: 9010
+
+info:
+  app:
+    name: ${spring.application.name}
+
+eureka:
+  client:
+    registerWithEureka: true
+    serviceUrl:
+      defaultZone: ${EUREKA_SERVER:http://localhost:8761/eureka}
+    healthcheck:
+      enabled: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include:
+          - health

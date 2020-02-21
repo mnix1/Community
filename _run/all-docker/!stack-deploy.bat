@@ -1,0 +1,1 @@
+docker stack deploy -c ../docker-compose-common.yml -c ../docker-compose-services.yml game-stack

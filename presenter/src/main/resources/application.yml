@@ -1,0 +1,52 @@
+spring:
+  application:
+    name: presenter
+#  security:
+#    oauth2:
+#      client:
+#        registration:
+#          keycloak:
+#            provider: keycloak
+#            client-id: local
+#            authorization-grant-type: authorization_code
+#            scope: openid
+#            redirect-uri: "{baseUrl}/{action}/oauth2/code/{registrationId}"
+#        provider:
+#          keycloak:
+#            authorization-uri: http://host.docker.internal:3000/auth/realms/local/protocol/openid-connect/auth
+#            token-uri: http://host.docker.internal:3000/auth/realms/local/protocol/openid-connect/token
+#            jwk-set-uri: http://host.docker.internal:3000/auth/realms/local/protocol/openid-connect/certs
+#            user-info-uri: http://host.docker.internal:3000/auth/realms/local/protocol/openid-connect/userinfo
+#            user-name-attribute: sub
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: http://host.docker.internal:3000/auth/realms/local/protocol/openid-connect/certs
+  session:
+    store-type: redis
+  redis:
+    host: host.docker.internal
+  rabbitmq:
+    host: host.docker.internal
+server:
+  port: 9000
+
+info:
+  app:
+    name: ${spring.application.name}
+
+eureka:
+  client:
+    registerWithEureka: true
+    serviceUrl:
+      defaultZone: ${EUREKA_SERVER:http://localhost:8761/eureka}
+    healthcheck:
+      enabled: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include:
+          - health
