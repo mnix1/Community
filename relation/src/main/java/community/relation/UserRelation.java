@@ -1,13 +1,13 @@
-package community.friend;
+package community.relation;
 
 import java.util.Objects;
 
-class Relation {
+class UserRelation {
     private final String friendId;
     private final boolean accepted;
     private final boolean acceptedByFriend;
 
-    Relation(String friendId, boolean accepted, boolean acceptedByFriend) {
+    UserRelation(String friendId, boolean accepted, boolean acceptedByFriend) {
         this.friendId = friendId;
         this.accepted = accepted;
         this.acceptedByFriend = acceptedByFriend;
@@ -33,10 +33,10 @@ class Relation {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        Relation relation = (Relation) o;
-        return accepted == relation.accepted &&
-                acceptedByFriend == relation.acceptedByFriend &&
-                Objects.equals(friendId, relation.friendId);
+        UserRelation userRelation = (UserRelation) o;
+        return accepted == userRelation.accepted &&
+                acceptedByFriend == userRelation.acceptedByFriend &&
+                Objects.equals(friendId, userRelation.friendId);
     }
 
     @Override

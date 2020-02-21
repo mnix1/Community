@@ -15,5 +15,6 @@
         <module>presenter</module>
         <module>simple</module>
         <module>relation</module>
+        <module>ui</module>
     </modules>
 </project>

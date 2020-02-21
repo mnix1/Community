@@ -1,19 +1,19 @@
 server:
-  port: 9000
+  port: 10000
 spring:
   application:
-    name: presenter
-  security:
-    oauth2:
-      resourceserver:
-        jwt:
-          jwk-set-uri: http://host.docker.internal:3000/auth/realms/local/protocol/openid-connect/certs
-  session:
-    store-type: redis
-  redis:
-    host: host.docker.internal
-  rabbitmq:
-    host: host.docker.internal
+    name: ui
+#  security:
+#    oauth2:
+#      resourceserver:
+#        jwt:
+#          jwk-set-uri: http://host.docker.internal:3000/auth/realms/local/protocol/openid-connect/certs
+#  session:
+#    store-type: redis
+#  redis:
+#    host: host.docker.internal
+#  rabbitmq:
+#    host: host.docker.internal
 
 info:
   app:

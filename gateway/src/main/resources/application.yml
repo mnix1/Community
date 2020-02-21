@@ -14,6 +14,14 @@ spring:
             - TokenRelay=
             - RemoveRequestHeader=Cookie
             - StripPrefix=1
+        - id: ui
+          uri: lb://ui
+          predicates:
+            - Path=/**
+          filters:
+            - TokenRelay=
+            - RemoveRequestHeader=Cookie
+            - StripPrefix=1
         - id: relation
           uri: lb://relation
           predicates:

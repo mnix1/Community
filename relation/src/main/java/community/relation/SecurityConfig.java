@@ -1,4 +1,4 @@
-package community.friend;
+package community.relation;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
