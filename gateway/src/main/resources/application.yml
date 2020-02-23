@@ -3,6 +3,11 @@ server:
 spring:
   application:
     name: gateway
+    index: 1
+  session:
+    store-type: redis
+  redis:
+    host: host.docker.internal
   cloud:
     gateway:
       routes:
@@ -10,14 +15,6 @@ spring:
           uri: lb://presenter
           predicates:
             - Path=/presenter/**
-          filters:
-            - TokenRelay=
-            - RemoveRequestHeader=Cookie
-            - StripPrefix=1
-        - id: ui
-          uri: lb://ui
-          predicates:
-            - Path=/**
           filters:
             - TokenRelay=
             - RemoveRequestHeader=Cookie
@@ -67,6 +64,8 @@ spring:
             jwk-set-uri: http://host.docker.internal:3000/auth/realms/local/protocol/openid-connect/certs
             user-info-uri: http://host.docker.internal:3000/auth/realms/local/protocol/openid-connect/userinfo
             user-name-attribute: sub
+#  webflux:
+#    static-path-pattern: /static/*
 info:
   app:
     name: ${spring.application.name}
