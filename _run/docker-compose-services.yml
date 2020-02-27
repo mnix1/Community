@@ -1,7 +1,7 @@
 version: '3'
 services:
   registry-primary:
-    image: mnix-game-registry:latest
+    image: community-registry:latest
     expose:
       - "8761"
     ports:
@@ -17,7 +17,7 @@ services:
     depends_on:
       - registry-secondary
   registry-secondary:
-    image: mnix-game-registry:latest
+    image: community-registry:latest
     expose:
       - "8761"
     ports:
@@ -31,7 +31,7 @@ services:
         limits:
           memory: 256M
   gateway:
-    image: mnix-game-gateway:latest
+    image: community-gateway:latest
     ports:
       - "127.0.0.1:8080:8080"
     depends_on:
@@ -44,7 +44,7 @@ services:
         limits:
           memory: 256M
   presenter:
-    image: mnix-game-presenter:latest
+    image: community-presenter:latest
     expose:
       - "9020"
     depends_on:
@@ -58,7 +58,7 @@ services:
         limits:
           memory: 256M
   stats:
-    image: mnix-game-stats:latest
+    image: community-stats:latest
     expose:
       - "9010"
     depends_on:
@@ -72,7 +72,7 @@ services:
         limits:
           memory: 256M
   simple:
-    image: mnix-game-simple:latest
+    image: community-simple:latest
     expose:
       - "9090"
     depends_on:

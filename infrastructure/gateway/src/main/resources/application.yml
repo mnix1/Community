@@ -1,0 +1,81 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: gateway
+  session:
+    store-type: redis
+  redis:
+    host: host.docker.internal
+  cloud:
+    gateway:
+      routes:
+        - id: presenter
+          uri: lb://presenter
+          predicates:
+            - Path=/presenter/**
+          filters:
+            - TokenRelay=
+            - RemoveRequestHeader=Cookie
+            - StripPrefix=1
+        - id: relation
+          uri: lb://relation
+          predicates:
+            - Path=/relation/**
+          filters:
+            - TokenRelay=
+            - RemoveRequestHeader=Cookie
+            - StripPrefix=1
+        - id: simple
+          uri: lb://simple
+          predicates:
+            - Path=/simple/**
+          filters:
+            - TokenRelay=
+            - RemoveRequestHeader=Cookie
+            - StripPrefix=1
+        - id: registry
+          uri: lb://registry
+          predicates:
+            - Path=/registry/**
+          filters:
+            - TokenRelay=
+            - RemoveRequestHeader=Cookie
+            - StripPrefix=1
+        - id: eureka
+          uri: lb://registry
+          predicates:
+            - Path=/eureka/**
+  security:
+    oauth2:
+      client:
+        registration:
+          keycloak:
+            provider: keycloak
+            client-id: local
+            authorization-grant-type: authorization_code
+            scope: openid
+            redirect-uri: "{baseUrl}/{action}/oauth2/code/{registrationId}"
+        provider:
+          keycloak:
+            authorization-uri: http://host.docker.internal:3000/auth/realms/local/protocol/openid-connect/auth
+            token-uri: http://host.docker.internal:3000/auth/realms/local/protocol/openid-connect/token
+            jwk-set-uri: http://host.docker.internal:3000/auth/realms/local/protocol/openid-connect/certs
+            user-info-uri: http://host.docker.internal:3000/auth/realms/local/protocol/openid-connect/userinfo
+            user-name-attribute: sub
+info:
+  app:
+    name: ${spring.application.name}
+eureka:
+  client:
+    registerWithEureka: true
+    serviceUrl:
+      defaultZone: ${EUREKA_SERVER:http://localhost:8761/eureka}
+    healthcheck:
+      enabled: true
+management:
+  endpoints:
+    web:
+      exposure:
+        include:
+          - health

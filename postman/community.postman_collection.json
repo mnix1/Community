@@ -1,0 +1,182 @@
+{
+	"info": {
+		"_postman_id": "5bfd7dcf-b59f-4736-9c27-d29e19d4fc5e",
+		"name": "community",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "relation",
+			"item": [
+				{
+					"name": "get relations",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJKWnRwbk83cHNaLTltbXNKUzh3MGxTeDNTVXc3RjJ5UTVqeDRMZU95ODV3In0.eyJqdGkiOiI3NzMxNTdmMy00MTVhLTQzYTItOGY1Ny1kOWM1Mzk0ZDY5ZjgiLCJleHAiOjE1ODI4NDgyNDQsIm5iZiI6MCwiaWF0IjoxNTgyODQ3OTQ0LCJpc3MiOiJodHRwOi8vaG9zdC5kb2NrZXIuaW50ZXJuYWw6MzAwMC9hdXRoL3JlYWxtcy9sb2NhbCIsImF1ZCI6ImFjY291bnQiLCJzdWIiOiI1YTZlOThmNC04NGYzLTQ5MzMtYTZkNS0wMDI2ZmJjMTZhYjYiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJzZXJ2aWNlIiwiYXV0aF90aW1lIjowLCJzZXNzaW9uX3N0YXRlIjoiMWQ1OGMxNGUtNGM4ZS00MjYzLWIxMDAtOTdjODUyMGQ5YzI1IiwiYWNyIjoiMSIsImFsbG93ZWQtb3JpZ2lucyI6WyJodHRwOi8vbG9jYWxob3N0OjgwODAiXSwicmVhbG1fYWNjZXNzIjp7InJvbGVzIjpbIm9mZmxpbmVfYWNjZXNzIiwidW1hX2F1dGhvcml6YXRpb24iXX0sInJlc291cmNlX2FjY2VzcyI6eyJhY2NvdW50Ijp7InJvbGVzIjpbIm1hbmFnZS1hY2NvdW50IiwibWFuYWdlLWFjY291bnQtbGlua3MiLCJ2aWV3LXByb2ZpbGUiXX19LCJzY29wZSI6ImVtYWlsIHByb2ZpbGUiLCJjbGllbnRIb3N0IjoiMTcyLjE5LjAuMSIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwiY2xpZW50SWQiOiJzZXJ2aWNlIiwicHJlZmVycmVkX3VzZXJuYW1lIjoic2VydmljZS1hY2NvdW50LXNlcnZpY2UiLCJjbGllbnRBZGRyZXNzIjoiMTcyLjE5LjAuMSJ9.cEICa_Fi10KUPJ1kzWBuD5-cqwl6lx9P6BgjSB-wVgPHmOQM7aQl0UEFtHR2E3FvGBRtr4zbbEgNeHNk47VXFtr0JAc_h9O-E6dvWnlY2Cppmt2sJw47JkZ64q_1u9s96RS-0-3npUBpiKgzeaN05hhgZLcU6YPKYEXCJ-EjPV0pUCtQhFxXxWeP2GoOYo5QW7KFyklxMgPPu09QHRh5nCXhIU04ZEv-MISF-tmj8CLnMNf7TIcYtuYRWf9KTsH4OKPNUsO9AQypmvawARY3nkCUypTNNKrXbWTYrPH-mUumHkkFZXPoZFTbE5odxj-7Ma_kWUinKRt_lPVdCbBuIA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"warning": "Key contains invalid whitespace characters.",
+								"key": "Content type",
+								"value": "application/json",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"friendId\": \"480534d2-29cb-4261-87d1-77674dcd5c6e\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9020/relations",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9020",
+							"path": [
+								"relations"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create relation",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJKWnRwbk83cHNaLTltbXNKUzh3MGxTeDNTVXc3RjJ5UTVqeDRMZU95ODV3In0.eyJqdGkiOiI4ZGEwZDc0Mi02N2IzLTQ0NjEtOWMwNS03MWNkNzVlODg3MWYiLCJleHAiOjE1ODI1MDAxNjQsIm5iZiI6MCwiaWF0IjoxNTgyNDk5ODY0LCJpc3MiOiJodHRwOi8vaG9zdC5kb2NrZXIuaW50ZXJuYWw6MzAwMC9hdXRoL3JlYWxtcy9sb2NhbCIsImF1ZCI6ImFjY291bnQiLCJzdWIiOiI3Nzk4MDBhYi1lOTZhLTQ0NDItODkzZC0wYjdlNzhkNDY2YjkiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJzZXJ2aWNlIiwiYXV0aF90aW1lIjowLCJzZXNzaW9uX3N0YXRlIjoiODVlYWM4ZTgtMzI4NS00NWJkLWI1ZDMtMGM3ZDJmYWFhMzc4IiwiYWNyIjoiMSIsImFsbG93ZWQtb3JpZ2lucyI6WyJodHRwOi8vbG9jYWxob3N0OjgwODAiXSwicmVhbG1fYWNjZXNzIjp7InJvbGVzIjpbIm9mZmxpbmVfYWNjZXNzIiwidW1hX2F1dGhvcml6YXRpb24iXX0sInJlc291cmNlX2FjY2VzcyI6eyJhY2NvdW50Ijp7InJvbGVzIjpbIm1hbmFnZS1hY2NvdW50IiwibWFuYWdlLWFjY291bnQtbGlua3MiLCJ2aWV3LXByb2ZpbGUiXX19LCJzY29wZSI6ImVtYWlsIHByb2ZpbGUiLCJjbGllbnRIb3N0IjoiMTcyLjE5LjAuMSIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwiY2xpZW50SWQiOiJzZXJ2aWNlIiwicHJlZmVycmVkX3VzZXJuYW1lIjoic2VydmljZS1hY2NvdW50LXNlcnZpY2UiLCJjbGllbnRBZGRyZXNzIjoiMTcyLjE5LjAuMSJ9.OjnETxMR4oWUpDnamTiU2NJ9V6n5fYcPmWWSxzgP2LXzfgaCGJqmAcRGI7ONMh2Q3NOMPVGpaq9oqiKbIv131UmmrB3ahrTOGMg0sRVlV2liKmgPDRe3c3KPMU-frdeCyMbp3yGCLrLnbOs_3F1RFLELyl4_0nRvFOs2KZExGBDzUjS1_lzZL53s8EUeG8-mxlebcZOJLpKkG5o98zOmTxYezjMDdvq2toLErbQeH1jLien9wQFZFi8SMJoCIkDINze7ADE40qLrEmqCNKAGH1P8mc20cFFtS91IhEaMAxnEZx7n5l17h8IlfyAkwuplLqnT3UjtUQf_HCjQuVqM3A",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content type",
+								"type": "text",
+								"value": "application/json",
+								"warning": "Key contains invalid whitespace characters.",
+								"disabled": true
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"id\": \"480534d2-29cb-4261-87d1-77674dcd5c6e\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9020/relations",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9020",
+							"path": [
+								"relations"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "token",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Basic  a3JvbHVAbG9jYWwuY29tOnRlc3Q=",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "client_credentials",
+							"type": "text"
+						},
+						{
+							"key": "client_id",
+							"value": "service",
+							"type": "text"
+						},
+						{
+							"key": "client_secret",
+							"value": "**********",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://host.docker.internal:3000/auth/realms/local/protocol/openid-connect/token",
+					"protocol": "http",
+					"host": [
+						"host",
+						"docker",
+						"internal"
+					],
+					"port": "3000",
+					"path": [
+						"auth",
+						"realms",
+						"local",
+						"protocol",
+						"openid-connect",
+						"token"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
