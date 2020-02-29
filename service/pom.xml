@@ -17,6 +17,7 @@
         <module>presenter</module>
         <module>simple</module>
         <module>relation</module>
+        <module>user</module>
     </modules>
     <dependencies>
         <!-- MANAGEMENT -->
