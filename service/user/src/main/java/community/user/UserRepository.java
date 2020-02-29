@@ -5,8 +5,6 @@ import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import java.sql.Timestamp;
-import java.util.HashSet;
-import java.util.Set;
 
 @Repository
 class UserRepository {
@@ -17,9 +15,10 @@ class UserRepository {
     }
 
     void save(User user) {
-        String query = "INSERT INTO user.user (id, created, last_sign_in, sign_in_count) VALUES (:id, NOW, NOW, 1) ON DUPLICATE KEY UPDATE " +
-                "SET last_sign_in=NOW, sign_in_count=sign_in_count+1";
-        MapSqlParameterSource params = new MapSqlParameterSource("id", user.getId());
+        String query = "INSERT INTO user.user (id, created, last_sign_in, sign_in_count) VALUES (:id, :lastSignIn, :lastSignIn, 1) ON DUPLICATE KEY UPDATE " +
+                "last_sign_in=:lastSignIn, sign_in_count=sign_in_count+1";
+        MapSqlParameterSource params = new MapSqlParameterSource("id", user.getId())
+                .addValue("lastSignIn", Timestamp.from(user.getLastSignIn()));
         jdbcTemplate.update(query, params);
     }
 }

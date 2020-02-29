@@ -157,14 +157,14 @@
 					]
 				},
 				"url": {
-					"raw": "http://host.docker.internal:3000/auth/realms/local/protocol/openid-connect/token",
+					"raw": "http://host.docker.internal:4000/auth/realms/local/protocol/openid-connect/token",
 					"protocol": "http",
 					"host": [
 						"host",
 						"docker",
 						"internal"
 					],
-					"port": "3000",
+					"port": "4000",
 					"path": [
 						"auth",
 						"realms",

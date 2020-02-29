@@ -7,7 +7,7 @@ spring:
     oauth2:
       resourceserver:
         jwt:
-          jwk-set-uri: http://host.docker.internal:3000/auth/realms/local/protocol/openid-connect/certs
+          jwk-set-uri: http://host.docker.internal:4000/auth/realms/local/protocol/openid-connect/certs
   rabbitmq:
     host: host.docker.internal
   datasource:

@@ -5,6 +5,7 @@ target/
 !**/src/main/**
 !**/src/test/**
 infrastructure/gateway/src/main/resources/static
+infrastructure/gateway/src/main/resources/template
 
 ### STS ###
 .apt_generated

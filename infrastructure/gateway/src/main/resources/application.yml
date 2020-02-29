@@ -7,6 +7,8 @@ spring:
     store-type: redis
   redis:
     host: host.docker.internal
+  rabbitmq:
+    host: host.docker.internal
   cloud:
     gateway:
       routes:
@@ -58,10 +60,10 @@ spring:
             redirect-uri: "{baseUrl}/{action}/oauth2/code/{registrationId}"
         provider:
           keycloak:
-            authorization-uri: http://host.docker.internal:3000/auth/realms/local/protocol/openid-connect/auth
-            token-uri: http://host.docker.internal:3000/auth/realms/local/protocol/openid-connect/token
-            jwk-set-uri: http://host.docker.internal:3000/auth/realms/local/protocol/openid-connect/certs
-            user-info-uri: http://host.docker.internal:3000/auth/realms/local/protocol/openid-connect/userinfo
+            authorization-uri: http://host.docker.internal:4000/auth/realms/local/protocol/openid-connect/auth
+            token-uri: http://host.docker.internal:4000/auth/realms/local/protocol/openid-connect/token
+            jwk-set-uri: http://host.docker.internal:4000/auth/realms/local/protocol/openid-connect/certs
+            user-info-uri: http://host.docker.internal:4000/auth/realms/local/protocol/openid-connect/userinfo
             user-name-attribute: sub
 info:
   app:

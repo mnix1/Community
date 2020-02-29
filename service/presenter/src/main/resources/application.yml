@@ -7,18 +7,16 @@ spring:
     oauth2:
       resourceserver:
         jwt:
-          jwk-set-uri: http://host.docker.internal:3000/auth/realms/local/protocol/openid-connect/certs
+          jwk-set-uri: http://host.docker.internal:4000/auth/realms/local/protocol/openid-connect/certs
   session:
     store-type: redis
   redis:
     host: host.docker.internal
   rabbitmq:
     host: host.docker.internal
-
 info:
   app:
     name: ${spring.application.name}
-
 eureka:
   client:
     registerWithEureka: true

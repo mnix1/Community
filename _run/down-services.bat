@@ -1,1 +1,0 @@
-docker-compose -f docker-compose-services.yml --compatibility down

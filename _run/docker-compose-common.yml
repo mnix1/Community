@@ -32,7 +32,7 @@ services:
     volumes:
       - ../common/auth/:/opt/data/
     ports:
-      - 3000:8080
+      - 4000:8080
     depends_on:
       - mysql
     deploy:

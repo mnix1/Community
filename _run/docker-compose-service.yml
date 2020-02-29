@@ -1,0 +1,38 @@
+version: '3'
+services:
+  presenter:
+    image: community-presenter:latest
+    expose:
+      - "9020"
+    environment:
+      - JAVA_OPTS=
+        -DEUREKA_SERVER=http://registry-primary:8761/eureka,http://registry-secondary:8761/eureka
+    deploy:
+      replicas: 2
+      resources:
+        limits:
+          memory: 256M
+  stats:
+    image: community-stats:latest
+    expose:
+      - "9010"
+    environment:
+      - JAVA_OPTS=
+        -DEUREKA_SERVER=http://registry-primary:8761/eureka,http://registry-secondary:8761/eureka
+    deploy:
+      replicas: 3
+      resources:
+        limits:
+          memory: 256M
+  simple:
+    image: community-simple:latest
+    expose:
+      - "9090"
+    environment:
+      - JAVA_OPTS=
+        -DEUREKA_SERVER=http://registry-primary:8761/eureka,http://registry-secondary:8761/eureka
+    deploy:
+      replicas: 3
+      resources:
+        limits:
+          memory: 256M
