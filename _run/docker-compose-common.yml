@@ -8,7 +8,7 @@ services:
     environment:
       - MYSQL_ROOT_PASSWORD=root
     volumes:
-      - ../common/db/:/docker-entrypoint-initdb.d/
+      - ../common/mysql/:/docker-entrypoint-initdb.d/
     deploy:
       resources:
         limits:
@@ -30,7 +30,7 @@ services:
 #      - "-Dkeycloak.migration.action=export -Dkeycloak.migration.provider=singleFile -Dkeycloak.migration.file=/opt/data/data.json"
       - "-Dkeycloak.migration.action=import -Dkeycloak.migration.provider=singleFile -Dkeycloak.migration.file=/opt/data/data.json -Dkeycloak.migration.strategy=OVERWRITE_EXISTING"
     volumes:
-      - ../common/auth/:/opt/data/
+      - ../common/keycloak/:/opt/data/
     ports:
       - 4000:8080
     depends_on:
@@ -52,6 +52,9 @@ services:
     ports:
       - 5672:5672
       - 15672:15672
+    volumes:
+      - ../common/rabbitmq/definitions.json:/etc/rabbitmq/definitions.json:ro
+      - ../common/rabbitmq/rabbitmq.conf:/etc/rabbitmq/rabbitmq.conf:ro
     deploy:
       resources:
         limits:
