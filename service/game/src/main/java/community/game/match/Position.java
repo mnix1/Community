@@ -14,4 +14,10 @@ public class Position {
     public Position forward(int rows) {
         return new Position(factor, row + rows * factor, column);
     }
+
+    public double distance(Position position) {
+        int dRow = row - position.row;
+        int dColumn = column - position.column;
+        return Math.sqrt(dRow * dRow + dColumn * dColumn);
+    }
 }

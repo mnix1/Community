@@ -1,44 +1,28 @@
 package community.game.wisie;
 
-import community.game.wisie.interaction.attack.AttackInteraction;
-import community.game.wisie.interaction.attack.DefaultAttackInteraction;
-import community.game.wisie.interaction.heal.HealInteraction;
+import community.game.wisie.interaction.controller.DefaultInteractionController;
 import community.game.wisie.interaction.controller.InteractionController;
-import community.game.wisie.interaction.heal.NoHealInteraction;
-import community.game.wisie.interaction.move.DefaultMoveInteraction;
-import community.game.wisie.interaction.move.MoveInteraction;
 
 public enum WisieType {
-    BULLO(interactionController, new DefaultMoveInteraction(), new DefaultAttackInteraction(), new NoHealInteraction()),//Byku
-    LUX_MANE(interactionController, new DefaultMoveInteraction(), new DefaultAttackInteraction(), new NoHealInteraction()),//Bujnogrzyw
-    TEDDO(interactionController, new DefaultMoveInteraction(), new DefaultAttackInteraction(), new NoHealInteraction()),//Dźwiedzior
-    ATHLETE(interactionController, new DefaultMoveInteraction(), new DefaultAttackInteraction(), new NoHealInteraction()),//Pudziuś
-    KIT_O(interactionController, new DefaultMoveInteraction(), new DefaultAttackInteraction(), new NoHealInteraction());//Kituś
-    private final InteractionController interactionController;
-    private final MoveInteraction moveInteraction;
-    private final AttackInteraction attackInteraction;
-    private final HealInteraction healInteraction;
+    BULLO(new DefaultInteractionController(), new DefaultSpeed()),//Byku
+    LUX_MANE(new DefaultInteractionController(), new DefaultSpeed()),//Bujnogrzyw
+    TEDDO(new DefaultInteractionController(), new DefaultSpeed()),//Dźwiedzior
+    ATHLETE(new DefaultInteractionController(), new DefaultSpeed()),//Pudziuś
+    KIT_O(new DefaultInteractionController(), new DefaultSpeed());//Kituś
 
-    WisieType(InteractionController interactionController, MoveInteraction moveInteraction, AttackInteraction attackInteraction, HealInteraction healInteraction) {
+    private final InteractionController interactionController;
+    private final Speed speed;
+
+    WisieType(InteractionController interactionController, Speed speed) {
         this.interactionController = interactionController;
-        this.moveInteraction = moveInteraction;
-        this.attackInteraction = attackInteraction;
-        this.healInteraction = healInteraction;
+        this.speed = speed;
     }
 
     public InteractionController getInteractionController() {
         return interactionController;
     }
 
-    public MoveInteraction getMoveInteraction() {
-        return moveInteraction;
-    }
-
-    public AttackInteraction getAttackInteraction() {
-        return attackInteraction;
-    }
-
-    public HealInteraction getHealInteraction() {
-        return healInteraction;
+    public Speed getSpeed() {
+        return speed;
     }
 }

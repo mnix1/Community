@@ -1,13 +1,17 @@
 package community.game.wisie.interaction.attack;
 
 import community.game.match.Contestant;
-import community.game.match.Id;
+import community.game.match.Contestants;
+import community.game.wisie.interaction.InteractionType;
+import community.game.wisie.interaction.ToTargetInteraction;
 
-import java.util.Map;
+public class DefaultAttackInteraction extends ToTargetInteraction implements AttackInteraction {
+    public DefaultAttackInteraction(Contestant source, Contestant target) {
+        super(source, target, InteractionType.ATTACK);
+    }
 
-public class DefaultAttackInteraction implements AttackInteraction {
     @Override
-    public int targetDamage(Contestant source, Map<Id, Contestant> contestants) {
+    public int targetDamage(Contestants contestants) {
         return source.getWisie().getBaseStats().getAttack();
     }
 }

@@ -1,14 +1,17 @@
 package community.game.wisie.interaction.heal;
 
 import community.game.match.Contestant;
-import community.game.match.Id;
-import community.game.wisie.interaction.attack.AttackInteraction;
+import community.game.match.Contestants;
+import community.game.wisie.interaction.InteractionType;
+import community.game.wisie.interaction.ToTargetInteraction;
 
-import java.util.Map;
+public class NoHealInteraction extends ToTargetInteraction implements HealInteraction {
+    public NoHealInteraction(Contestant source, Contestant target) {
+        super(source, target, InteractionType.HEAL);
+    }
 
-public class NoHealInteraction implements HealInteraction {
     @Override
-    public int targetHeal(Contestant source, Map<Id, Contestant> contestants) {
+    public int targetHeal(Contestants contestants) {
         return 0;
     }
 }

@@ -1,15 +1,16 @@
 package community.game.wisie.interaction.move;
 
-import community.game.match.Contestant;
-import community.game.match.Id;
-import community.game.match.Position;
-import community.game.wisie.interaction.attack.AttackInteraction;
+import community.game.match.*;
+import community.game.wisie.interaction.Interaction;
+import community.game.wisie.interaction.InteractionType;
 
-import java.util.Map;
+public class DefaultMoveInteraction extends Interaction implements MoveInteraction {
+    public DefaultMoveInteraction(Contestant source) {
+        super(source, InteractionType.MOVE);
+    }
 
-public class DefaultMoveInteraction implements MoveInteraction {
     @Override
-    public Position targetPosition(Contestant source, Map<Id, Contestant> contestants) {
+    public Position targetPosition() {
         return source.getPosition().forward(source.getWisie().getBaseStats().getMoveRange());
     }
 }

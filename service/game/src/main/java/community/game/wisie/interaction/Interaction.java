@@ -1,16 +1,13 @@
 package community.game.wisie.interaction;
 
-import community.game.match.Id;
-import community.game.match.InteractionType;
+import community.game.match.Contestant;
 
 public abstract class Interaction {
-    private final Id source;
-    private final Id target;
-    private final InteractionType type;
+    protected final Contestant source;
+    protected final InteractionType type;
 
-    protected Interaction(Id source, Id target, InteractionType type) {
+    protected Interaction(Contestant source, InteractionType type) {
         this.source = source;
-        this.target = target;
         this.type = type;
     }
 }

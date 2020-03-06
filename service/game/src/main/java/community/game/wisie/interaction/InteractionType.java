@@ -1,4 +1,4 @@
-package community.game.match;
+package community.game.wisie.interaction;
 
 public enum InteractionType {
     ATTACK,
