@@ -18,17 +18,13 @@
         <module>simple</module>
         <module>relation</module>
         <module>user</module>
+        <module>game</module>
     </modules>
     <dependencies>
         <!-- MANAGEMENT -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
-        </dependency>
-        <!-- WEB -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
         <!-- SECURITY -->
         <dependency>

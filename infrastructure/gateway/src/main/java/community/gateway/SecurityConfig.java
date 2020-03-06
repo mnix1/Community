@@ -15,7 +15,7 @@ public class SecurityConfig {
     }
 
     @Bean
-    public SecurityWebFilterChain springSecurityFilterChain(ServerHttpSecurity http) {
+    public SecurityWebFilterChain securityWebFilterChain(ServerHttpSecurity http) {
         http.authorizeExchange().anyExchange().authenticated().and().logout().logoutSuccessHandler((webFilterExchange, authentication) -> Mono.empty());
         http.oauth2Login().authenticationSuccessHandler(sendMessageAuthenticationSuccessHandler);
         http.oauth2Client();

@@ -1,6 +1,5 @@
 package community.user.messaging;
 
-import community.user.User;
 import community.user.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

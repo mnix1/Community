@@ -12,10 +12,10 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<name>simple</name>
 	<dependencies>
-		<!-- MESSAGING -->
+		<!-- WEB -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-amqp</artifactId>
+			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 	</dependencies>
 </project>

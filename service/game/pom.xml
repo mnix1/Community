@@ -8,14 +8,18 @@
 		<version>0.0.1-SNAPSHOT</version>
 		<relativePath/>
 	</parent>
-	<artifactId>user</artifactId>
+	<artifactId>game</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>user</name>
+	<name>game</name>
 	<dependencies>
-		<!-- MESSAGING -->
+		<!-- WEB -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-amqp</artifactId>
+			<artifactId>spring-boot-starter-webflux</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-integration</artifactId>
 		</dependency>
 		<!-- UTILS -->
 		<dependency>

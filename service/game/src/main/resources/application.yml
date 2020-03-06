@@ -8,8 +8,6 @@ spring:
       resourceserver:
         jwt:
           jwk-set-uri: http://host.docker.internal:4000/auth/realms/local/protocol/openid-connect/certs
-  rabbitmq:
-    host: host.docker.internal
   datasource:
     url: jdbc:mysql://host.docker.internal:3306
     username: root
