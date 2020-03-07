@@ -4,25 +4,25 @@ import community.game.wisie.interaction.controller.DefaultInteractionController;
 import community.game.wisie.interaction.controller.InteractionController;
 
 public enum WisieType {
-    BULLO(new DefaultInteractionController(), new DefaultSpeed()),//Byku
-    LUX_MANE(new DefaultInteractionController(), new DefaultSpeed()),//Bujnogrzyw
-    TEDDO(new DefaultInteractionController(), new DefaultSpeed()),//Dźwiedzior
-    ATHLETE(new DefaultInteractionController(), new DefaultSpeed()),//Pudziuś
-    KIT_O(new DefaultInteractionController(), new DefaultSpeed());//Kituś
+    BULLO(new DefaultInteractionController(), new DefaultDelay()),//Byku
+    LUX_MANE(new DefaultInteractionController(), new DefaultDelay()),//Bujnogrzyw
+    TEDDO(new DefaultInteractionController(), new DefaultDelay()),//Dźwiedzior
+    ATHLETE(new DefaultInteractionController(), new DefaultDelay()),//Pudziuś
+    KIT_O(new DefaultInteractionController(), new DefaultDelay());//Kituś
 
     private final InteractionController interactionController;
-    private final Speed speed;
+    private final Delay delay;
 
-    WisieType(InteractionController interactionController, Speed speed) {
+    WisieType(InteractionController interactionController, Delay delay) {
         this.interactionController = interactionController;
-        this.speed = speed;
+        this.delay = delay;
     }
 
     public InteractionController getInteractionController() {
         return interactionController;
     }
 
-    public Speed getSpeed() {
-        return speed;
+    public Delay getDelay() {
+        return delay;
     }
 }

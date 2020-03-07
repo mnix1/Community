@@ -1,5 +1,6 @@
 package community.game.wisie.interaction.move;
 
+import community.game.contestant.Contestant;
 import community.game.match.*;
 import community.game.wisie.interaction.Interaction;
 import community.game.wisie.interaction.InteractionType;
@@ -11,6 +12,6 @@ public class DefaultMoveInteraction extends Interaction implements MoveInteracti
 
     @Override
     public Position targetPosition() {
-        return source.getPosition().forward(source.getWisie().getBaseStats().getMoveRange());
+        return source.getState().getPosition().forward(source.getWisie().getBaseStats().getMoveRange());
     }
 }

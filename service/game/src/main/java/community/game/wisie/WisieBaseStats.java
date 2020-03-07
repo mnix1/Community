@@ -1,7 +1,7 @@
 package community.game.wisie;
 
 public class WisieBaseStats {
-    private final int speed;
+    private final int delay;
     private final int maxHealth;
     private final int startHealth;
     private final int attack;
@@ -13,8 +13,8 @@ public class WisieBaseStats {
     private final int moveRange;
     private final int playRange;
 
-    public WisieBaseStats(int speed, int maxHealth, int startHealth, int attack, int attackRange, int defend, int heal, int healRange, int cost, int moveRange, int playRange) {
-        this.speed = speed;
+    public WisieBaseStats(int delay, int maxHealth, int startHealth, int attack, int attackRange, int defend, int heal, int healRange, int cost, int moveRange, int playRange) {
+        this.delay = delay;
         this.maxHealth = maxHealth;
         this.startHealth = startHealth;
         this.attack = attack;
@@ -27,8 +27,8 @@ public class WisieBaseStats {
         this.playRange = playRange;
     }
 
-    public int getSpeed() {
-        return speed;
+    public int getDelay() {
+        return delay;
     }
 
     public int getMaxHealth() {

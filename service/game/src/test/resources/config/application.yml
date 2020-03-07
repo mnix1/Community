@@ -1,0 +1,11 @@
+spring:
+  cloud:
+    discovery:
+      enabled: false
+
+management:
+  endpoints:
+    enabled-by-default: false
+
+security:
+  enabled: false

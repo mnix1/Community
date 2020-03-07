@@ -1,8 +1,7 @@
 package community.game.wisie.interaction.controller;
 
-import community.game.match.Contestant;
-import community.game.match.Contestants;
-import community.game.match.Id;
+import community.game.contestant.Contestant;
+import community.game.contestant.Contestants;
 import community.game.wisie.interaction.Interaction;
 
 import java.util.List;

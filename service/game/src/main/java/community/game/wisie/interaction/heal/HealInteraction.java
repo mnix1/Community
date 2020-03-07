@@ -1,10 +1,6 @@
 package community.game.wisie.interaction.heal;
 
-import community.game.match.Contestant;
-import community.game.match.Contestants;
-import community.game.match.Id;
-
-import java.util.Map;
+import community.game.contestant.Contestants;
 
 public interface HealInteraction {
     int targetHeal(Contestants contestants);

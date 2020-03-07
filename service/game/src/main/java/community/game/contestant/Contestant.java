@@ -1,18 +1,19 @@
-package community.game.match;
+package community.game.contestant;
 
+import community.game.match.Id;
 import community.game.wisie.Wisie;
 
 public class Contestant {
     private final Id id;
     private final Id teamId;
-    private final Position position;
     private final Wisie wisie;
+    private final State state;
 
-    public Contestant(Id id, Id teamId, Position position, Wisie wisie) {
+    public Contestant(Id id, Id teamId, Wisie wisie, State state) {
         this.id = id;
         this.teamId = teamId;
-        this.position = position;
         this.wisie = wisie;
+        this.state = state;
     }
 
     public Id getId() {
@@ -23,11 +24,11 @@ public class Contestant {
         return teamId;
     }
 
-    public Position getPosition() {
-        return position;
-    }
-
     public Wisie getWisie() {
         return wisie;
+    }
+
+    public State getState() {
+        return state;
     }
 }

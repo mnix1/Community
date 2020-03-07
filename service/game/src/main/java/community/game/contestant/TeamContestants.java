@@ -1,7 +1,8 @@
-package community.game.match;
+package community.game.contestant;
+
+import community.game.match.Id;
 
 import java.util.Collection;
-import java.util.List;
 import java.util.Map;
 
 public class TeamContestants {

@@ -1,7 +1,7 @@
 package community.game.wisie.interaction.controller;
 
-import community.game.match.Contestant;
-import community.game.match.Contestants;
+import community.game.contestant.Contestant;
+import community.game.contestant.Contestants;
 import community.game.wisie.interaction.Interaction;
 import community.game.wisie.interaction.attack.DefaultAttackInteraction;
 import community.game.wisie.interaction.move.DefaultMoveInteraction;
@@ -22,7 +22,7 @@ public class DefaultInteractionController implements InteractionController {
 
     private Optional<Contestant> findOpponentToAttack(Contestant source, Contestants contestants) {
         return contestants.get(source.getTeamId()).getAll().stream()
-                .map(c -> Tuples.of(c, source.getPosition().distance(c.getPosition())))
+                .map(c -> Tuples.of(c, source.getState().getPosition().distance(c.getState().getPosition())))
                 .filter(t -> t.getT2() <= source.getWisie().getBaseStats().getAttackRange())
                 .min(Comparator.comparing(Tuple2::getT2))
                 .map(Tuple2::getT1);

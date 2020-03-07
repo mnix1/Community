@@ -1,7 +1,7 @@
 package community.game.wisie.interaction.heal;
 
-import community.game.match.Contestant;
-import community.game.match.Contestants;
+import community.game.contestant.Contestant;
+import community.game.contestant.Contestants;
 import community.game.wisie.interaction.InteractionType;
 import community.game.wisie.interaction.ToTargetInteraction;
 

@@ -1,6 +1,6 @@
 package community.game.wisie.interaction;
 
-import community.game.match.Contestant;
+import community.game.contestant.Contestant;
 
 public abstract class Interaction {
     protected final Contestant source;
