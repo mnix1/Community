@@ -1,0 +1,20 @@
+package community.game.match;
+
+import community.game.match.state.Position;
+
+public class Board {
+    private final static int MIN_ROW = 0;
+    private final static int MAX_ROW = 10;
+    private final static int MIDDLE_ROW = (MAX_ROW - MIN_ROW) / 2;
+    private final static int MIN_COLUMN = 0;
+    private final static int MAX_COLUMN = 10;
+    private final static int MIDDLE_COLUMN = (MIN_COLUMN - MAX_COLUMN) / 2;
+
+
+    public static Position start(boolean main) {
+        if (main) {
+            return new Position(main, MIN_ROW, MIDDLE_COLUMN);
+        }
+        return new Position(main, MAX_ROW, MIDDLE_COLUMN);
+    }
+}
