@@ -16,8 +16,8 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class TestMatchBuilder {
-    private Player main = new RandomMatchPlayerProvider().get(Id.random());
-    private Player opponent = new RandomMatchPlayerProvider().get(Id.random());
+    private Player main = new RandomMatchPlayerProvider().get(Id.random(), true);
+    private Player opponent = new RandomMatchPlayerProvider().get(Id.random(), false);
     private List<ContestantState> contestantStates = IntStream.range(0, 10).boxed()
             .map(i -> {
                 Player player = i % 2 == 0 ? main : opponent;
@@ -42,6 +42,10 @@ public class TestMatchBuilder {
 
     public List<ContestantState> getContestantStates() {
         return contestantStates;
+    }
+
+    public ContestantState findContestantState(boolean main) {
+        return contestantStates.stream().filter(c -> c.getPlayer().isMain() == main).findFirst().get();
     }
 
     Match build() {

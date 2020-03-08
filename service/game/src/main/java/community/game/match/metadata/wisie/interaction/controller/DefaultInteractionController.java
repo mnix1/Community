@@ -20,7 +20,7 @@ public class DefaultInteractionController implements InteractionController {
         List<Interaction> moveInteractions = List.of(new DefaultMoveInteraction());
         if (args.getSource().getEnergy() >= args.getSource().getWisie().getBaseStats().get(WisieStat.ATTACK_ENERGY_COST).get(args)) {
             return findOpponentToAttack(args).
-                    <List<Interaction>>map(c -> List.of(new DefaultAttackInteraction()))
+                    <List<Interaction>>map(c -> List.of(new DefaultAttackInteraction(c)))
                     .orElse(moveInteractions);
         } else if (args.getSource().getEnergy() >= args.getSource().getWisie().getBaseStats().get(WisieStat.MOVE_ENERGY_COST).get(args)) {
             return moveInteractions;

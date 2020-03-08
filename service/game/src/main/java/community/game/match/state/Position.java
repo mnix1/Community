@@ -34,8 +34,8 @@ public class Position {
 //    }
 
     public int distance(Position position) {
-        int dRow = row - position.row;
-        int dColumn = column - position.column;
+        int dRow = Math.abs(row - position.row);
+        int dColumn = Math.abs(column - position.column);
         return Math.max(dRow, dColumn);
     }
 

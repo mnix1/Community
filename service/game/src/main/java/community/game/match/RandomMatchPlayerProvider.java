@@ -17,9 +17,9 @@ import static community.game.RandomHelper.randomInteger;
 @Service
 public class RandomMatchPlayerProvider implements MatchPlayerProvider {
     @Override
-    public Player get(Id id) {
+    public Player get(Id id, boolean main) {
         int maxEnergy = randomInteger(3, 10);
-        return new Player(id, id, true, playerWisies(id), maxEnergy, randomInteger(1, maxEnergy));
+        return new Player(id, id, main, playerWisies(id), maxEnergy, randomInteger(1, maxEnergy));
     }
 
     private List<Wisie> playerWisies(Id id) {

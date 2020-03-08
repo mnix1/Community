@@ -11,9 +11,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class MatchTest {
     @Test
-    void increaseEnergyAndMove() {
+    void regenEnergyAndMove() {
         TestMatchBuilder matchBuilder = new TestMatchBuilder();
-        ContestantState contestantState = matchBuilder.getContestantStates().stream().findFirst().get();
+        ContestantState contestantState = matchBuilder.findContestantState(true);
         contestantState.energy(1);
         contestantState.position(new Position(true, 1, 0));
         contestantState.getWisie().getBaseStats().add(WisieStat.ENERGY_REGEN, () -> 2);
@@ -26,7 +26,29 @@ class MatchTest {
         match.nextTick();
 
         assertThat(match.getState().getTick()).isEqualTo(1);
-        assertThat(match.getState().getContestantState(contestantState.getId()).getEnergy()).isEqualTo(1 + 2 - 1);
-        assertThat(match.getState().getContestantState(contestantState.getId()).getPosition()).isEqualTo(new Position(true, 1 + 2, 0));
+        assertThat(contestantState.getEnergy()).isEqualTo(1 + 2 - 1);
+        assertThat(contestantState.getPosition()).isEqualTo(new Position(true, 1 + 2, 0));
+    }
+
+    @Test
+    void regenHealthAndAttack() {
+        TestMatchBuilder matchBuilder = new TestMatchBuilder();
+        ContestantState mainPlayerContestantState = matchBuilder.findContestantState(true);
+        mainPlayerContestantState.energy(100);
+        mainPlayerContestantState.getWisie().getBaseStats().add(WisieStat.ENERGY_REGEN, () -> 0);
+        mainPlayerContestantState.getWisie().getBaseStats().add(WisieStat.ATTACK_ENERGY_COST, () -> 69);
+        mainPlayerContestantState.getWisie().getBaseStats().add(WisieStat.ATTACK_RANGE, () -> 1000);
+        mainPlayerContestantState.getWisie().getBaseStats().add(WisieStat.ATTACK, () -> 5);
+        ContestantState opponentPlayerContestantState = matchBuilder.findContestantState(false);
+        opponentPlayerContestantState.health(6);
+        opponentPlayerContestantState.getWisie().getBaseStats().add(WisieStat.HEALTH_MAX, () -> 10);
+        opponentPlayerContestantState.getWisie().getBaseStats().add(WisieStat.HEALTH_REGEN, () -> 1);
+        opponentPlayerContestantState.getWisie().getBaseStats().add(WisieStat.DEFEND, () -> 1);
+        Match match = matchBuilder.contestantStates(List.of(mainPlayerContestantState, opponentPlayerContestantState)).build();
+
+        match.nextTick();
+
+        assertThat(mainPlayerContestantState.getEnergy()).isEqualTo(100 - 69);
+        assertThat(opponentPlayerContestantState.getHealth()).isEqualTo(6 + 1 - 5 + 1);
     }
 }
