@@ -38,7 +38,7 @@ public class TestMatchBuilder {
     }
 
     public Match build() {
-        return new Match(state, new MatchMetadata(players, new Contestants(Map.of(firstTeamId, teamContestants(firstTeamId, firstTeamContestants), secondTeamId, teamContestants(secondTeamId, secondTeamContestants)))));
+        return new Match(id, state, new MatchMetadata(players, new Contestants(Map.of(firstTeamId, teamContestants(firstTeamId, firstTeamContestants), secondTeamId, teamContestants(secondTeamId, secondTeamContestants)))));
     }
 
     private TeamContestants teamContestants(Id teamId, List<Contestant> contestants) {
