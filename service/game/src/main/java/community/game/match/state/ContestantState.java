@@ -1,17 +1,36 @@
 package community.game.match.state;
 
-import community.game.match.metadata.contestant.Contestant;
+import community.game.Id;
+import community.game.match.metadata.Player;
+import community.game.match.metadata.wisie.Wisie;
 
 public class ContestantState {
-    private final Contestant contestant;
+    private final Id id = Id.random();
+    private final Player player;
+    private final Wisie wisie;
     private Position position;
     private int delay;
     private int health;
 
-    public ContestantState(Contestant contestant) {
-        this.contestant = contestant;
-        this.delay = contestant.getWisie().getBaseStats().getDelay();
-        this.health = contestant.getWisie().getBaseStats().getStartHealth();
+    public ContestantState(Player player, Wisie wisie, Position startPosition) {
+        this.player = player;
+        this.wisie = wisie;
+        this.delay = wisie.getBaseStats().getDelay();
+        this.health = wisie.getBaseStats().getStartHealth();
+        //TODO validate start position and cost
+        this.position = startPosition;
+    }
+
+    public Id getId() {
+        return id;
+    }
+
+    public Player getPlayer() {
+        return player;
+    }
+
+    public Wisie getWisie() {
+        return wisie;
     }
 
     public ContestantState position(Position position) {
@@ -27,10 +46,6 @@ public class ContestantState {
     public ContestantState health(int health) {
         this.health = health;
         return this;
-    }
-
-    public Contestant getContestant() {
-        return contestant;
     }
 
     public Position getPosition() {

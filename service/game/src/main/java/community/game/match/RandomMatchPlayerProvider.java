@@ -1,5 +1,7 @@
-package community.game;
+package community.game.match;
 
+import community.game.Id;
+import community.game.match.metadata.Player;
 import community.game.match.metadata.wisie.Wisie;
 import community.game.match.metadata.wisie.WisieBaseStats;
 import community.game.match.metadata.wisie.WisieType;
@@ -12,13 +14,19 @@ import java.util.stream.IntStream;
 import static community.game.RandomHelper.randomInteger;
 
 @Service
-public class UserService {
-    public List<Wisie> userWisies(Id id) {
+public class RandomMatchPlayerProvider implements MatchPlayerProvider {
+    @Override
+    public Player get(Id id) {
+        int maxEnergy = randomInteger(3, 10);
+        return new Player(id, id, true, playerWisies(id), maxEnergy, randomInteger(1, maxEnergy));
+    }
+
+    private List<Wisie> playerWisies(Id id) {
         return IntStream.range(0, 8).boxed().map(i -> randomWisie()).collect(Collectors.toList());
     }
 
     private Wisie randomWisie() {
-        return new Wisie(WisieType.random(), randomWisieBaseStats());
+        return new Wisie(Id.random(), WisieType.random(), randomWisieBaseStats());
     }
 
     private WisieBaseStats randomWisieBaseStats() {
@@ -36,4 +44,5 @@ public class UserService {
                 randomInteger(1, 2)
         );
     }
+
 }

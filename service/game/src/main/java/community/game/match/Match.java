@@ -27,7 +27,7 @@ public class Match {
         allStateChangers.addAll(changers);
     }
 
-    public void handle(){
+    public void play(Id playerId) {
 
     }
 

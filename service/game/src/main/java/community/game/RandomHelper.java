@@ -72,6 +72,17 @@ public class RandomHelper {
         return set.stream().map(index -> list.get(index)).collect(Collectors.toList());
     }
 
+    public static <T> T randomElement(Collection<T> collection) {
+        int index = 0;
+        int element = randomElementIndex(collection.size());
+        for (T i : collection) {
+            if (index++ == element) {
+                return i;
+            }
+        }
+        throw new RuntimeException("Out of size");
+    }
+
     public static <T> T randomElement(List<T> list) {
         return randomElement(list, 0, 0);
     }
@@ -84,15 +95,15 @@ public class RandomHelper {
         if (list.isEmpty()) {
             return null;
         }
-        return list.get(randomElementIndex(list, offsetBegin, offsetEnd));
+        return list.get(randomElementIndex(list.size(), offsetBegin, offsetEnd));
     }
 
 
-    public static int randomElementIndex(List list) {
-        return randomElementIndex(list, 0, 0);
+    public static int randomElementIndex(int size) {
+        return randomElementIndex(size, 0, 0);
     }
 
-    public static int randomElementIndex(List list, int offsetBegin, int offsetEnd) {
-        return offsetBegin + random.nextInt(list.size() - offsetBegin - offsetEnd);
+    public static int randomElementIndex(int size, int offsetBegin, int offsetEnd) {
+        return offsetBegin + random.nextInt(size - offsetBegin - offsetEnd);
     }
 }

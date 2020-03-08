@@ -1,11 +1,11 @@
 package community.game.match.metadata.wisie.interaction.controller;
 
 import community.game.match.metadata.MatchMetadata;
-import community.game.match.state.ContestantState;
-import community.game.match.state.MatchState;
 import community.game.match.metadata.wisie.interaction.Interaction;
 import community.game.match.metadata.wisie.interaction.attack.DefaultAttackInteraction;
 import community.game.match.metadata.wisie.interaction.move.DefaultMoveInteraction;
+import community.game.match.state.ContestantState;
+import community.game.match.state.MatchState;
 import reactor.util.function.Tuple2;
 import reactor.util.function.Tuples;
 
@@ -23,10 +23,10 @@ public class DefaultInteractionController implements InteractionController {
     }
 
     private Optional<ContestantState> findOpponentToAttack(ContestantState source, MatchState state) {
-        return state.contestantStates().stream()
-                .filter(c -> !c.getContestant().getPlayerId().equals(source.getContestant().getPlayerId()))
+        return state.getContestantStates().stream()
+                .filter(c -> !c.getPlayer().getId().equals(source.getPlayer().getId()))
                 .map(c -> Tuples.of(c, source.getPosition().distance(c.getPosition())))
-                .filter(t -> t.getT2() <= source.getContestant().getWisie().getBaseStats().getAttackRange())
+                .filter(t -> t.getT2() <= source.getWisie().getBaseStats().getAttackRange())
                 .min(Comparator.comparing(Tuple2::getT2))
                 .map(Tuple2::getT1);
     }

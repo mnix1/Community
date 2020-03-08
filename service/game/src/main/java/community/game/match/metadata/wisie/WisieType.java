@@ -5,69 +5,67 @@ import community.game.match.metadata.wisie.interaction.controller.DefaultInterac
 import community.game.match.metadata.wisie.interaction.controller.InteractionController;
 
 public enum WisieType {
-    ALI(new DefaultInteractionController(), new DefaultDelay()),//Ali
-    ANTON(new DefaultInteractionController(), new DefaultDelay()),//Mrówkacz
-    BIZ_ON(new DefaultInteractionController(), new DefaultDelay()),//Żubrowar
-    BEELLIE(new DefaultInteractionController(), new DefaultDelay()),//Żądłolot
-    TEDDO(new DefaultInteractionController(), new DefaultDelay()),//Dźwiedzior
-    BULLO(new DefaultInteractionController(), new DefaultDelay()),//Byku
-    ATHLETE(new DefaultInteractionController(), new DefaultDelay()),//Pudziuś
-    CAMELEOMAN(new DefaultInteractionController(), new DefaultDelay()),//Wielobłąd
-    FRISKY(new DefaultInteractionController(), new DefaultDelay()),//Mruczka
-    KIT_O(new DefaultInteractionController(), new DefaultDelay()),//Kituś
-    KITTY(new DefaultInteractionController(), new DefaultDelay()),//Kicia
-    SHYRIEK(new DefaultInteractionController(), new DefaultDelay()),//Piskacz
-    GATOR(new DefaultInteractionController(), new DefaultDelay()),//Kroczek
-    SMARTIE(new DefaultInteractionController(), new DefaultDelay()),//Bystruś
-    CUDDLE(new DefaultInteractionController(), new DefaultDelay()),//Pulszek
-    CUTIE(new DefaultInteractionController(), new DefaultDelay()),//Słodzik
-    SCARY_GARY(new DefaultInteractionController(), new DefaultDelay()),//Pikełło
-    KINK_KNOT(new DefaultInteractionController(), new DefaultDelay()),//Supełło
-    CHUBBO(new DefaultInteractionController(), new DefaultDelay()),//Grubełło
-    FOODIE(new DefaultInteractionController(), new DefaultDelay()),//Smakełło
-    TOMEAGLE(new DefaultInteractionController(), new DefaultDelay()),//Orłuś
-    BUGBER(new DefaultInteractionController(), new DefaultDelay()),//Trąbcia
-    ELLIE(new DefaultInteractionController(), new DefaultDelay()),//Słoniu
-    FOXY_ROXY(new DefaultInteractionController(), new DefaultDelay()),//Lisiczka
-    BROWNOSIE(new DefaultInteractionController(), new DefaultDelay()),//Lizuś
-    MISSFROGGIE(new DefaultInteractionController(), new DefaultDelay()),//Żabcia
-    GIRALLA(new DefaultInteractionController(), new DefaultDelay()),//Rafcia
-    STRONGIE(new DefaultInteractionController(), new DefaultDelay()),//Goruś
-    PONY(new DefaultInteractionController(), new DefaultDelay()),//Rumo
-    CHEERFUL(new DefaultInteractionController(), new DefaultDelay()),//Skoczka
-    BRO(new DefaultInteractionController(), new DefaultDelay()),//Kolo
-    LURK(new DefaultInteractionController(), new DefaultDelay()),//Pardzio
-    LUX_MANE(new DefaultInteractionController(), new DefaultDelay()),//Bujnogrzyw
-    SHORTIE(new DefaultInteractionController(), new DefaultDelay()),//Mały
-    OCTOPUSH(new DefaultInteractionController(), new DefaultDelay()),//Ośmiornik
-    OST_RICH(new DefaultInteractionController(), new DefaultDelay()),//Strusior
-    OWLIE(new DefaultInteractionController(), new DefaultDelay()),//Sowcia
-    BIGHEAD(new DefaultInteractionController(), new DefaultDelay()),//Mądruś
-    PANDICE(new DefaultInteractionController(), new DefaultDelay()),//Pandziu
-    SLOPPY(new DefaultInteractionController(), new DefaultDelay()),//Zgapka
-    PENGPONG(new DefaultInteractionController(), new DefaultDelay()),//Pinguś
-    LITTLEBEAR(new DefaultInteractionController(), new DefaultDelay()),//Misiaczek
-    KITTER(new DefaultInteractionController(), new DefaultDelay()),//Kicek
-    RACCO(new DefaultInteractionController(), new DefaultDelay()),//Szopuś
-    WALKER(new DefaultInteractionController(), new DefaultDelay()),//Wędrek
-    BITTERO(new DefaultInteractionController(), new DefaultDelay()),//Ząbek
-    WOOLLY(new DefaultInteractionController(), new DefaultDelay()),//Wełnuś
-    SNAKIEE(new DefaultInteractionController(), new DefaultDelay()),//Jaduś
-    STORKIE(new DefaultInteractionController(), new DefaultDelay()),//Bociek
-    SPEEDO(new DefaultInteractionController(), new DefaultDelay()),//Wiewcia
-    PETIGER(new DefaultInteractionController(), new DefaultDelay()),//Zdzigrys
-    TURK(new DefaultInteractionController(), new DefaultDelay()),//Induś
-    SHELLO(new DefaultInteractionController(), new DefaultDelay()),//Skorupny
-    WALRUS(new DefaultInteractionController(), new DefaultDelay()),//Morsu
-    ROBO(new DefaultInteractionController(), new DefaultDelay()),//Robcio
-    WOLFART(new DefaultInteractionController(), new DefaultDelay());//Wilku
+    ALI(new DefaultInteractionController()),//Ali
+    ANTON(new DefaultInteractionController()),//Mrówkacz
+    BIZ_ON(new DefaultInteractionController()),//Żubrowar
+    BEELLIE(new DefaultInteractionController()),//Żądłolot
+    TEDDO(new DefaultInteractionController()),//Dźwiedzior
+    BULLO(new DefaultInteractionController()),//Byku
+    ATHLETE(new DefaultInteractionController()),//Pudziuś
+    CAMELEOMAN(new DefaultInteractionController()),//Wielobłąd
+    FRISKY(new DefaultInteractionController()),//Mruczka
+    KIT_O(new DefaultInteractionController()),//Kituś
+    KITTY(new DefaultInteractionController()),//Kicia
+    SHYRIEK(new DefaultInteractionController()),//Piskacz
+    GATOR(new DefaultInteractionController()),//Kroczek
+    SMARTIE(new DefaultInteractionController()),//Bystruś
+    CUDDLE(new DefaultInteractionController()),//Pulszek
+    CUTIE(new DefaultInteractionController()),//Słodzik
+    SCARY_GARY(new DefaultInteractionController()),//Pikełło
+    KINK_KNOT(new DefaultInteractionController()),//Supełło
+    CHUBBO(new DefaultInteractionController()),//Grubełło
+    FOODIE(new DefaultInteractionController()),//Smakełło
+    TOMEAGLE(new DefaultInteractionController()),//Orłuś
+    BUGBER(new DefaultInteractionController()),//Trąbcia
+    ELLIE(new DefaultInteractionController()),//Słoniu
+    FOXY_ROXY(new DefaultInteractionController()),//Lisiczka
+    BROWNOSIE(new DefaultInteractionController()),//Lizuś
+    MISSFROGGIE(new DefaultInteractionController()),//Żabcia
+    GIRALLA(new DefaultInteractionController()),//Rafcia
+    STRONGIE(new DefaultInteractionController()),//Goruś
+    PONY(new DefaultInteractionController()),//Rumo
+    CHEERFUL(new DefaultInteractionController()),//Skoczka
+    BRO(new DefaultInteractionController()),//Kolo
+    LURK(new DefaultInteractionController()),//Pardzio
+    LUX_MANE(new DefaultInteractionController()),//Bujnogrzyw
+    SHORTIE(new DefaultInteractionController()),//Mały
+    OCTOPUSH(new DefaultInteractionController()),//Ośmiornik
+    OST_RICH(new DefaultInteractionController()),//Strusior
+    OWLIE(new DefaultInteractionController()),//Sowcia
+    BIGHEAD(new DefaultInteractionController()),//Mądruś
+    PANDICE(new DefaultInteractionController()),//Pandziu
+    SLOPPY(new DefaultInteractionController()),//Zgapka
+    PENGPONG(new DefaultInteractionController()),//Pinguś
+    LITTLEBEAR(new DefaultInteractionController()),//Misiaczek
+    KITTER(new DefaultInteractionController()),//Kicek
+    RACCO(new DefaultInteractionController()),//Szopuś
+    WALKER(new DefaultInteractionController()),//Wędrek
+    BITTERO(new DefaultInteractionController()),//Ząbek
+    WOOLLY(new DefaultInteractionController()),//Wełnuś
+    SNAKIEE(new DefaultInteractionController()),//Jaduś
+    STORKIE(new DefaultInteractionController()),//Bociek
+    SPEEDO(new DefaultInteractionController()),//Wiewcia
+    PETIGER(new DefaultInteractionController()),//Zdzigrys
+    TURK(new DefaultInteractionController()),//Induś
+    SHELLO(new DefaultInteractionController()),//Skorupny
+    WALRUS(new DefaultInteractionController()),//Morsu
+    ROBO(new DefaultInteractionController()),//Robcio
+    WOLFART(new DefaultInteractionController());//Wilku
 
     private final InteractionController interactionController;
-    private final Delay delay;
 
-    WisieType(InteractionController interactionController, Delay delay) {
+    WisieType(InteractionController interactionController) {
         this.interactionController = interactionController;
-        this.delay = delay;
     }
 
     public static WisieType random() {
@@ -76,9 +74,5 @@ public enum WisieType {
 
     public InteractionController getInteractionController() {
         return interactionController;
-    }
-
-    public Delay getDelay() {
-        return delay;
     }
 }

@@ -6,7 +6,7 @@ import community.game.match.state.MatchState;
 public class DecrementDelay implements StateChanger {
     @Override
     public void apply(MatchState state, MatchMetadata metadata) {
-        state.contestantStates().forEach(c -> c.delay(c.getDelay() - 1));
+        state.getContestantStates().forEach(c -> c.delay(c.getDelay() - 1));
     }
 
 }

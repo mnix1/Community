@@ -1,55 +1,43 @@
 package community.game.match;
 
 import community.game.Id;
+import community.game.RandomHelper;
 import community.game.match.metadata.MatchMetadata;
+import community.game.match.metadata.Player;
 import community.game.match.metadata.Players;
-import community.game.match.metadata.contestant.Contestant;
-import community.game.match.metadata.contestant.Contestants;
-import community.game.match.metadata.contestant.TeamContestants;
+import community.game.match.state.ContestantState;
 import community.game.match.state.MatchState;
+import community.game.match.state.Position;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class TestMatchBuilder {
-    private MatchState state;
-    private Players players;
-    private Id firstTeamId = Id.random();
-    private Id secondTeamId = Id.random();
-    private List<Contestant> firstTeamContestants = new ArrayList<>();
-    private List<Contestant> secondTeamContestants = new ArrayList<>();
+    private Player main = new RandomMatchPlayerProvider().get(Id.random());
+    private Player opponent = new RandomMatchPlayerProvider().get(Id.random());
+    private List<ContestantState> contestantStates = IntStream.range(0, 10).boxed()
+            .map(i -> {
+                Player player = i % 2 == 0 ? main : opponent;
+                return new ContestantState(player, RandomHelper.randomElement(player.allWisies()), Position.random(player.isMain()));
+            }).collect(Collectors.toList());
 
-    public TestMatchBuilder state(MatchState state) {
-        this.state = state;
-        return this;
+    public Player getMain() {
+        return main;
     }
 
-    public TestMatchBuilder teamContestant(Contestant contestant) {
-        if (firstTeamId.equals(contestant.getPlayerId())) {
-            this.firstTeamContestants.add(contestant);
-        } else if (secondTeamId.equals(contestant.getPlayerId())) {
-            this.secondTeamContestants.add(contestant);
-        } else {
-            throw new IllegalArgumentException("Wrong teamId: " + contestant.getPlayerId());
-        }
-        return this;
+    public Player getOpponent() {
+        return opponent;
     }
 
-    public Match build() {
-        return new Match(id, state, new MatchMetadata(players, new Contestants(Map.of(firstTeamId, teamContestants(firstTeamId, firstTeamContestants), secondTeamId, teamContestants(secondTeamId, secondTeamContestants)))));
+    public List<ContestantState> getContestantStates() {
+        return contestantStates;
     }
 
-    private TeamContestants teamContestants(Id teamId, List<Contestant> contestants) {
-        return new TeamContestants(teamId, contestants.stream().collect(Collectors.toMap(Contestant::getId, c -> c)));
-    }
-
-    public Id getFirstTeamId() {
-        return firstTeamId;
-    }
-
-    public Id getSecondTeamId() {
-        return secondTeamId;
+    Match build() {
+        MatchMetadata metadata = new MatchMetadata(new Players(main, opponent));
+        MatchState state = new MatchState(metadata);
+        contestantStates.forEach(state::addContestantState);
+        return new Match(Id.random(), state, metadata);
     }
 }

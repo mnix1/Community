@@ -7,9 +7,9 @@ import community.game.match.metadata.wisie.interaction.controller.InteractionCon
 public class PlayContestant implements StateChanger {
     @Override
     public void apply(MatchState state, MatchMetadata metadata) {
-        state.contestantStates().stream().filter(c -> c.getDelay() <= 0)
+        state.getContestantStates().stream().filter(c -> c.getDelay() <= 0)
                 .forEach(c -> {
-                    InteractionController interactionController = c.getContestant().getWisie().getType().getInteractionController();
+                    InteractionController interactionController = c.getWisie().getType().getInteractionController();
                     interactionController.interactions(c, state, metadata);
                 });
     }
