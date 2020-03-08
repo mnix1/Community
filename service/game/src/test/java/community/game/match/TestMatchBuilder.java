@@ -5,6 +5,8 @@ import community.game.RandomHelper;
 import community.game.match.metadata.MatchMetadata;
 import community.game.match.metadata.Player;
 import community.game.match.metadata.Players;
+import community.game.match.metadata.wisie.Wisie;
+import community.game.match.metadata.wisie.stat.WisieStat;
 import community.game.match.state.ContestantState;
 import community.game.match.state.MatchState;
 import community.game.match.state.Position;
@@ -19,8 +21,16 @@ public class TestMatchBuilder {
     private List<ContestantState> contestantStates = IntStream.range(0, 10).boxed()
             .map(i -> {
                 Player player = i % 2 == 0 ? main : opponent;
-                return new ContestantState(player, RandomHelper.randomElement(player.allWisies()), Position.random(player.isMain()));
+                Wisie wisie = RandomHelper.randomElement(player.allWisies());
+                return new ContestantState(player, wisie, Position.random(player.isMain()))
+                        .energy(wisie.getBaseStats().get(WisieStat.ENERGY_START).get())
+                        .health(wisie.getBaseStats().get(WisieStat.HEALTH_START).get());
             }).collect(Collectors.toList());
+
+    public TestMatchBuilder contestantStates(List<ContestantState> contestantStates) {
+        this.contestantStates = contestantStates;
+        return this;
+    }
 
     public Player getMain() {
         return main;

@@ -2,6 +2,8 @@ package community.game.match.state;
 
 import community.game.match.Board;
 
+import java.util.Objects;
+
 import static community.game.RandomHelper.randomInteger;
 import static community.game.match.Board.*;
 
@@ -25,13 +27,43 @@ public class Position {
         return new Position(main, row + rows * factor(), column);
     }
 
-    public double distance(Position position) {
+//    public double distance(Position position) {
+//        int dRow = row - position.row;
+//        int dColumn = column - position.column;
+//        return Math.sqrt(dRow * dRow + dColumn * dColumn);
+//    }
+
+    public int distance(Position position) {
         int dRow = row - position.row;
         int dColumn = column - position.column;
-        return Math.sqrt(dRow * dRow + dColumn * dColumn);
+        return Math.max(dRow, dColumn);
     }
 
     private int factor() {
         return main ? 1 : -1;
+    }
+
+    @Override
+    public String toString() {
+        return "Position{" +
+                "main=" + main +
+                ", row=" + row +
+                ", column=" + column +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Position position = (Position) o;
+        return main == position.main &&
+                row == position.row &&
+                column == position.column;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(main, row, column);
     }
 }

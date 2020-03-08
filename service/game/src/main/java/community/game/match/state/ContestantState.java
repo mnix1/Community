@@ -9,15 +9,12 @@ public class ContestantState {
     private final Player player;
     private final Wisie wisie;
     private Position position;
-    private int delay;
+    private int energy;
     private int health;
 
     public ContestantState(Player player, Wisie wisie, Position startPosition) {
         this.player = player;
         this.wisie = wisie;
-        this.delay = wisie.getBaseStats().getDelay();
-        this.health = wisie.getBaseStats().getStartHealth();
-        //TODO validate start position and cost
         this.position = startPosition;
     }
 
@@ -38,8 +35,8 @@ public class ContestantState {
         return this;
     }
 
-    public ContestantState delay(int delay) {
-        this.delay = delay;
+    public ContestantState energy(int energy) {
+        this.energy = energy;
         return this;
     }
 
@@ -52,8 +49,8 @@ public class ContestantState {
         return position;
     }
 
-    public int getDelay() {
-        return delay;
+    public int getEnergy() {
+        return energy;
     }
 
     public int getHealth() {

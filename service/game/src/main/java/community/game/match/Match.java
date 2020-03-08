@@ -2,8 +2,8 @@ package community.game.match;
 
 import community.game.Id;
 import community.game.match.metadata.MatchMetadata;
-import community.game.match.state.NextTickChangers;
 import community.game.match.state.MatchState;
+import community.game.match.state.NextTickChangers;
 import community.game.match.state.changer.StateChanger;
 
 import java.util.ArrayList;

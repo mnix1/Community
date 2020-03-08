@@ -1,12 +1,14 @@
-package community.game.match.metadata.wisie.interaction;
+package community.game.match.metadata.wisie.stat;
 
 import community.game.match.Args;
 import community.game.match.metadata.MatchMetadata;
 import community.game.match.state.ContestantState;
 import community.game.match.state.MatchState;
 
-public interface Interaction {
-    InteractionType type();
+public interface StatValueProvider {
+    default int get(Args args) {
+        return get();
+    }
 
-    void invoke(Args args);
+    int get();
 }

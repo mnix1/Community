@@ -1,6 +1,7 @@
 package community.game.match.state;
 
 import community.game.Id;
+import community.game.NotFoundException;
 import community.game.match.metadata.MatchMetadata;
 import community.game.match.metadata.Player;
 
@@ -25,6 +26,10 @@ public class MatchState {
 
     public Optional<ContestantState> findContestantState(Id id) {
         return Optional.ofNullable(contestants.get(id));
+    }
+
+    public ContestantState getContestantState(Id id) {
+        return findContestantState(id).orElseThrow(() -> new NotFoundException("getContestantState"));
     }
 
     public MatchState addContestantState(ContestantState contestantState) {
