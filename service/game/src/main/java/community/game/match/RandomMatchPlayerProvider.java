@@ -19,7 +19,7 @@ public class RandomMatchPlayerProvider implements MatchPlayerProvider {
     @Override
     public Player get(Id id, boolean main) {
         int maxEnergy = randomInteger(3, 10);
-        return new Player(id, id, main, playerWisies(id), maxEnergy, randomInteger(1, maxEnergy));
+        return new Player(id, id, main, playerWisies(id), maxEnergy, randomInteger(1, maxEnergy), randomInteger(1, 2));
     }
 
     private List<Wisie> playerWisies(Id id) {
@@ -29,6 +29,6 @@ public class RandomMatchPlayerProvider implements MatchPlayerProvider {
     private Wisie randomWisie() {
         WisieType type = WisieType.random();
         int level = randomInteger(1, 10);
-        return new Wisie(Id.random(), type, level, randomInteger(1, 10), new RandomWisieStatsProvider().findStats(type, level, Instant.now()));
+        return new Wisie(Id.random(), type, level, new RandomWisieStatsProvider().findStats(type, level, Instant.now()));
     }
 }

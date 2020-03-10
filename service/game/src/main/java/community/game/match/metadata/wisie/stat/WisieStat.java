@@ -1,7 +1,7 @@
 package community.game.match.metadata.wisie.stat;
 
 public enum WisieStat {
-    SUMMON_COST,
+    SUMMON_ENERGY_COST,
     ENERGY_MAX,
     ENERGY_START,
     ENERGY_REGEN,

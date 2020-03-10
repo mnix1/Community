@@ -1,21 +1,19 @@
 package community.game.match.metadata.wisie;
 
 import community.game.Id;
-import community.game.match.metadata.wisie.stat.WisieBaseStats;
+import community.game.match.metadata.wisie.stat.WisieStats;
 
 public class Wisie {
     private final Id id;
     private final WisieType type;
     private final int level;
-    private final int summonEnergyCost;
-    private final WisieBaseStats baseStats;
+    private final WisieStats stats;
 
-    public Wisie(Id id, WisieType type, int level, int summonEnergyCost, WisieBaseStats baseStats) {
+    public Wisie(Id id, WisieType type, int level, WisieStats stats) {
         this.id = id;
         this.type = type;
         this.level = level;
-        this.summonEnergyCost = summonEnergyCost;
-        this.baseStats = baseStats;
+        this.stats = stats;
     }
 
     public Id getId() {
@@ -30,11 +28,7 @@ public class Wisie {
         return level;
     }
 
-    public int getSummonEnergyCost() {
-        return summonEnergyCost;
-    }
-
-    public WisieBaseStats getBaseStats() {
-        return baseStats;
+    public WisieStats getStats() {
+        return stats;
     }
 }

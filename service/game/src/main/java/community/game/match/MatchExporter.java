@@ -45,7 +45,7 @@ public class MatchExporter {
     }
 
     private List<Map<String, ?>> playerStates(Collection<PlayerState> playerStates) {
-        return playerStates.stream().map(p -> Map.of("id", p.getId().toString(), "energy", p.getEnergy())).collect(Collectors.toList());
+        return playerStates.stream().map(p -> Map.of("id", p.getPlayer().getId().toString(), "energy", p.getEnergy())).collect(Collectors.toList());
     }
 
     private List<Map<String, ?>> contestantStates(Collection<ContestantState> contestantStates) {
@@ -57,11 +57,11 @@ public class MatchExporter {
     }
 
     private List<Map<String, Object>> players(Collection<Player> players) {
-        return players.stream().map(p -> Map.of("id", p.getId().toString(), "teamId", p.getTeamId(), "main", p.isMain(), "maxEnergy", p.getMaxEnergy(), "startEnergy", p.getStartEnergy(), "wisies", wisies(p.allWisies()))).collect(Collectors.toList());
+        return players.stream().map(p -> Map.of("id", p.getId().toString(), "teamId", p.getTeamId(), "main", p.isMain(), "maxEnergy", p.getEnergyMax(), "startEnergy", p.getEnergyStart(), "wisies", wisies(p.allWisies()))).collect(Collectors.toList());
     }
 
     private List<Map<String, Object>> wisies(Collection<Wisie> wisies) {
-        return wisies.stream().map(w -> Map.of("id", w.getId().toString(), "type", w.getType(), "level", w.getLevel(), "baseStats", baseStats(w.getBaseStats().getBaseStats()))).collect(Collectors.toList());
+        return wisies.stream().map(w -> Map.of("id", w.getId().toString(), "type", w.getType(), "level", w.getLevel(), "baseStats", baseStats(w.getStats().getStats()))).collect(Collectors.toList());
     }
 
     private Map<Object, Object> baseStats(Map<WisieStat, StatValueProvider> baseStats) {

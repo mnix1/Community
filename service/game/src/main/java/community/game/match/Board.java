@@ -15,7 +15,7 @@ public class Board {
     private final int minColumn = MIN_COLUMN;
     private final int maxColumn = MAX_COLUMN;
 
-    public static Position start(boolean main) {
+    public Position startPosition(boolean main) {
         if (main) {
             return new Position(main, MIN_ROW, MIDDLE_COLUMN);
         }

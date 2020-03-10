@@ -23,8 +23,8 @@ public class TestMatchBuilder {
                 Player player = i % 2 == 0 ? main : opponent;
                 Wisie wisie = RandomHelper.randomElement(player.allWisies());
                 return new ContestantState(player, wisie, Position.random(player.isMain()))
-                        .energy(wisie.getBaseStats().get(WisieStat.ENERGY_START).get())
-                        .health(wisie.getBaseStats().get(WisieStat.HEALTH_START).get());
+                        .energy(wisie.getStats().get(WisieStat.ENERGY_START).get(null, null))
+                        .health(wisie.getStats().get(WisieStat.HEALTH_START).get(null, null));
             }).collect(Collectors.toList());
 
     public TestMatchBuilder contestantStates(List<ContestantState> contestantStates) {

@@ -9,19 +9,30 @@ public class IncrementTick implements StateChanger {
     public void apply(Match match) {
         MatchState state = match.getState();
         state.tick(state.getTick() + 1);
-        regenEnergyAndHealth(match);
+        regenContestantsEnergyAndHealth(match);
+        regenPlayersEnergyAndHealth(match);
     }
 
-    private void regenEnergyAndHealth(Match match) {
+    private void regenContestantsEnergyAndHealth(Match match) {
         match.getState().allContestants()
                 .forEach(c -> {
-                    int maxEnergy = c.getWisie().getBaseStats().get(WisieStat.ENERGY_MAX).get(c, match);
+                    int maxEnergy = c.getWisie().getStats().get(WisieStat.ENERGY_MAX).get(c, match);
                     if (maxEnergy > c.getEnergy()) {
-                        c.energy(Math.min(maxEnergy, c.getEnergy() + c.getWisie().getBaseStats().get(WisieStat.ENERGY_REGEN).get(c, match)));
+                        c.energy(Math.min(maxEnergy, c.getEnergy() + c.getWisie().getStats().get(WisieStat.ENERGY_REGEN).get(c, match)));
                     }
-                    int maxHealth = c.getWisie().getBaseStats().get(WisieStat.HEALTH_MAX).get(c, match);
+                    int maxHealth = c.getWisie().getStats().get(WisieStat.HEALTH_MAX).get(c, match);
                     if (maxHealth > c.getHealth()) {
-                        c.health(Math.min(maxHealth, c.getHealth() + c.getWisie().getBaseStats().get(WisieStat.HEALTH_REGEN).get(c, match)));
+                        c.health(Math.min(maxHealth, c.getHealth() + c.getWisie().getStats().get(WisieStat.HEALTH_REGEN).get(c, match)));
+                    }
+                });
+    }
+
+    private void regenPlayersEnergyAndHealth(Match match) {
+        match.getState().allPlayers()
+                .forEach(p -> {
+                    int maxEnergy = p.getPlayer().getEnergyMax();
+                    if (maxEnergy > p.getEnergy()) {
+                        p.energy(Math.min(maxEnergy, p.getEnergy() + p.getPlayer().getEnergyRegen()));
                     }
                 });
     }

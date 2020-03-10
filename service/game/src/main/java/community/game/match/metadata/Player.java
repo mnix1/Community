@@ -15,16 +15,18 @@ public class Player {
     private final Id teamId;
     private final boolean main;
     private final Map<Id, Wisie> wisies;
-    private final int maxEnergy;
-    private final int startEnergy;
+    private final int energyMax;
+    private final int energyStart;
+    private final int energyRegen;
 
-    public Player(Id id, Id teamId, boolean main, List<Wisie> wisies, int maxEnergy, int startEnergy) {
+    public Player(Id id, Id teamId, boolean main, List<Wisie> wisies, int energyMax, int energyStart, int energyRegen) {
         this.id = id;
         this.teamId = teamId;
         this.main = main;
         this.wisies = wisies.stream().collect(Collectors.toMap(Wisie::getId, p -> p));
-        this.maxEnergy = maxEnergy;
-        this.startEnergy = startEnergy;
+        this.energyMax = energyMax;
+        this.energyStart = energyStart;
+        this.energyRegen = energyRegen;
     }
 
     public Id getId() {
@@ -51,11 +53,15 @@ public class Player {
         return wisies.values();
     }
 
-    public int getMaxEnergy() {
-        return maxEnergy;
+    public int getEnergyMax() {
+        return energyMax;
     }
 
-    public int getStartEnergy() {
-        return startEnergy;
+    public int getEnergyStart() {
+        return energyStart;
+    }
+
+    public int getEnergyRegen() {
+        return energyRegen;
     }
 }

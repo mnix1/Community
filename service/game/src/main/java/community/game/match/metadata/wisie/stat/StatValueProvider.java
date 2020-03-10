@@ -6,9 +6,5 @@ import community.game.match.state.ContestantState;
 public interface StatValueProvider {
     StatValueProviderType getType();
 
-    default int get(ContestantState source, Match match) {
-        return get();
-    }
-
-    int get();
+    int get(ContestantState source, Match match);
 }

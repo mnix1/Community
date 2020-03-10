@@ -1,5 +1,8 @@
 package community.game.match.metadata.wisie.stat;
 
+import community.game.match.Match;
+import community.game.match.state.ContestantState;
+
 import static community.game.match.metadata.wisie.stat.StatValueProviderType.CONST_VALUE;
 
 public class ConstStatValueProvider implements StatValueProvider {
@@ -15,7 +18,8 @@ public class ConstStatValueProvider implements StatValueProvider {
     }
 
     @Override
-    public int get() {
+    public int get(ContestantState source, Match match) {
         return value;
     }
+
 }
