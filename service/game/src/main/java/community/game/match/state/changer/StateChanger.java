@@ -1,8 +1,7 @@
 package community.game.match.state.changer;
 
-import community.game.match.metadata.MatchMetadata;
-import community.game.match.state.MatchState;
+import community.game.match.Match;
 
 public interface StateChanger {
-    void apply(MatchState state, MatchMetadata metadata);
+    void apply(Match match);
 }

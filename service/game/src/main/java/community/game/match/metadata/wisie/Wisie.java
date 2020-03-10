@@ -7,12 +7,14 @@ public class Wisie {
     private final Id id;
     private final WisieType type;
     private final int level;
+    private final int summonEnergyCost;
     private final WisieBaseStats baseStats;
 
-    public Wisie(Id id, WisieType type, int level, WisieBaseStats baseStats) {
+    public Wisie(Id id, WisieType type, int level, int summonEnergyCost, WisieBaseStats baseStats) {
         this.id = id;
         this.type = type;
         this.level = level;
+        this.summonEnergyCost = summonEnergyCost;
         this.baseStats = baseStats;
     }
 
@@ -26,6 +28,10 @@ public class Wisie {
 
     public int getLevel() {
         return level;
+    }
+
+    public int getSummonEnergyCost() {
+        return summonEnergyCost;
     }
 
     public WisieBaseStats getBaseStats() {

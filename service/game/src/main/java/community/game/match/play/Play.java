@@ -1,6 +1,7 @@
 package community.game.match.play;
 
 import community.game.Id;
+import community.game.match.Match;
 import community.game.match.metadata.MatchMetadata;
 import community.game.match.state.MatchState;
 import community.game.match.state.changer.StateChanger;
@@ -31,7 +32,7 @@ public abstract class Play {
         return type;
     }
 
-    public abstract boolean canPlay(MatchState state, MatchMetadata metadata);
+    public abstract boolean canPlay(Match match);
 
-    public abstract List<StateChanger> toStateChangers(MatchState state, MatchMetadata metadata);
+    public abstract List<StateChanger> toStateChangers(Match match);
 }

@@ -1,10 +1,7 @@
 package community.game.match.play;
 
 import community.game.Id;
-import community.game.match.Args;
-import community.game.match.metadata.MatchMetadata;
-import community.game.match.metadata.wisie.stat.WisieStat;
-import community.game.match.state.MatchState;
+import community.game.match.Match;
 import community.game.match.state.changer.StateChanger;
 
 import java.time.Instant;
@@ -19,12 +16,12 @@ public class SummonWisiePlay extends Play {
     }
 
     @Override
-    public boolean canPlay(MatchState state, MatchMetadata metadata) {
-        return state.getPlayer(playerId).getEnergy() >= metadata.getPlayers().get(playerId).getWisie(wisieId).getBaseStats().get(WisieStat.SUMMON_COST).get(new Args());
+    public boolean canPlay(Match match) {
+        return match.getState().getPlayer(playerId).getEnergy() >= match.getMetadata().getPlayers().get(playerId).getWisie(wisieId).getSummonEnergyCost();
     }
 
     @Override
-    public List<StateChanger> toStateChangers(MatchState state, MatchMetadata metadata) {
+    public List<StateChanger> toStateChangers(Match match) {
         return null;
     }
 }

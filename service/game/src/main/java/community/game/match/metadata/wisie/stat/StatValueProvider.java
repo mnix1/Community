@@ -1,11 +1,12 @@
 package community.game.match.metadata.wisie.stat;
 
-import community.game.match.Args;
+import community.game.match.Match;
+import community.game.match.state.ContestantState;
 
 public interface StatValueProvider {
     StatValueProviderType getType();
 
-    default int get(Args args) {
+    default int get(ContestantState source, Match match) {
         return get();
     }
 

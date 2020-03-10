@@ -29,6 +29,6 @@ public class RandomMatchPlayerProvider implements MatchPlayerProvider {
     private Wisie randomWisie() {
         WisieType type = WisieType.random();
         int level = randomInteger(1, 10);
-        return new Wisie(Id.random(), type, level, new RandomWisieStatsProvider().findStats(type, level, Instant.now()));
+        return new Wisie(Id.random(), type, level, randomInteger(1, 10), new RandomWisieStatsProvider().findStats(type, level, Instant.now()));
     }
 }

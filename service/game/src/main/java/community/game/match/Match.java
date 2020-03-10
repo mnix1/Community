@@ -32,15 +32,15 @@ public class Match {
     }
 
     public synchronized void play(Play play) {
-        if (!play.canPlay(state, metadata)) {
+        if (!play.canPlay(this)) {
             return;
         }
-        execute(play.toStateChangers(state, metadata));
+        execute(play.toStateChangers(this));
         processedPlays.add(new ProcessedPlay(play, now()));
     }
 
     public void execute(List<StateChanger> stateChangers) {
-        stateChangers.forEach(s -> s.apply(state, metadata));
+        stateChangers.forEach(s -> s.apply(this));
         this.stateChanges.add(new StateChanged(stateChangers, now()));
     }
 
