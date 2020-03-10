@@ -1,6 +1,7 @@
 package community.game.match.metadata;
 
 import community.game.Id;
+import community.game.NotFoundException;
 
 import java.util.Arrays;
 import java.util.Collection;
@@ -21,5 +22,9 @@ public class Players {
 
     public Optional<Player> find(Id id) {
         return Optional.ofNullable(players.get(id));
+    }
+
+    public Player get(Id id) {
+        return find(id).orElseThrow(() -> new NotFoundException("get Id=" + id));
     }
 }

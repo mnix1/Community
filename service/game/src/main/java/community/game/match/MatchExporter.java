@@ -9,7 +9,7 @@ import community.game.match.metadata.wisie.stat.WisieStat;
 import community.game.match.state.ContestantState;
 import community.game.match.state.MatchState;
 import community.game.match.state.PlayerState;
-import community.game.match.state.changer.StateChanger;
+import community.game.match.state.StateChanged;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -19,11 +19,11 @@ import java.util.stream.Collectors;
 
 public class MatchExporter {
     private final Match match;
-    private final List<List<StateChanger>> allStateChangers;
+    private final List<StateChanged> stateChanges;
 
     public MatchExporter(Match match) {
         this.match = new Match(match.getId(), new MatchState(match.getMetadata()), match.getMetadata());
-        this.allStateChangers = match.getAllStateChangers();
+        this.stateChanges = match.getStateChanges();
     }
 
     public String export() {
@@ -33,8 +33,8 @@ public class MatchExporter {
     private List<Map<String, Object>> state() {
         List<Map<String, Object>> ticks = new ArrayList<>();
         ticks.add(tick());
-        allStateChangers.forEach(stateChangers -> {
-            match.execute(stateChangers);
+        stateChanges.forEach(s -> {
+            match.execute(s.getStateChangers());
             ticks.add(tick());
         });
         return ticks;
@@ -53,7 +53,7 @@ public class MatchExporter {
     }
 
     private Map<String, Object> metadata(MatchMetadata metadata) {
-        return Map.of("start", metadata.getStart(), "board", board(metadata.getBoard()), "players", players(metadata.getPlayers().all()));
+        return Map.of("start", metadata.getCreated(), "board", board(metadata.getBoard()), "players", players(metadata.getPlayers().all()));
     }
 
     private List<Map<String, Object>> players(Collection<Player> players) {

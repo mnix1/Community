@@ -1,6 +1,7 @@
 package community.game.match.metadata;
 
 import community.game.Id;
+import community.game.NotFoundException;
 import community.game.match.metadata.wisie.Wisie;
 
 import java.util.Collection;
@@ -38,8 +39,12 @@ public class Player {
         return main;
     }
 
-    public Optional<Wisie> getWisie(Id id) {
+    public Optional<Wisie> findWisie(Id id) {
         return Optional.ofNullable(wisies.get(id));
+    }
+
+    public Wisie getWisie(Id id) {
+        return findWisie(id).orElseThrow(() -> new NotFoundException("getWisie Id=" + id));
     }
 
     public Collection<Wisie> allWisies() {

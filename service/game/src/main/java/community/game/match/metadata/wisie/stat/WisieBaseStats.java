@@ -6,7 +6,6 @@ import java.util.Optional;
 
 public class WisieBaseStats {
     private Map<WisieStat, StatValueProvider> baseStats = new HashMap<>();
-
     public Optional<StatValueProvider> find(WisieStat stat) {
         return Optional.ofNullable(baseStats.get(stat));
     }

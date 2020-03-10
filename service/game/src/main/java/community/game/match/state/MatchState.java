@@ -1,12 +1,14 @@
 package community.game.match.state;
 
 import community.game.Id;
+import community.game.NotFoundException;
 import community.game.match.metadata.MatchMetadata;
 import community.game.match.metadata.Player;
 
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class MatchState {
@@ -18,6 +20,22 @@ public class MatchState {
         this.players = metadata.getPlayers().all().stream().collect(Collectors.toMap(Player::getId, PlayerState::new));
     }
 
+    public Optional<ContestantState> findContestant(Id id) {
+        return Optional.ofNullable(contestants.get(id));
+    }
+
+    public ContestantState getContestant(Id id) {
+        return findContestant(id).orElseThrow(() -> new NotFoundException("getContestantState Id=" + id));
+    }
+
+    public Optional<PlayerState> findPlayer(Id id) {
+        return Optional.ofNullable(players.get(id));
+    }
+
+    public PlayerState getPlayer(Id id) {
+        return findPlayer(id).orElseThrow(() -> new NotFoundException("getPlayer Id=" + id));
+    }
+
     public Collection<ContestantState> allContestants() {
         return contestants.values();
     }
@@ -26,7 +44,7 @@ public class MatchState {
         return players.values();
     }
 
-    public MatchState addContestantState(ContestantState contestantState) {
+    public MatchState addContestant(ContestantState contestantState) {
         contestants.put(contestantState.getId(), contestantState);
         return this;
     }

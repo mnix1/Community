@@ -12,7 +12,7 @@ public class RandomWisieStatsProvider implements WisieStatsProvider {
         int energyMax = randomInteger(4, 10);
         int healthMax = randomInteger(1, 40);
         return new WisieBaseStats()
-                .add(WisieStat.PLAY_COST, new ConstStatValueProvider(randomInteger(2, 8)))
+                .add(WisieStat.SUMMON_COST, new ConstStatValueProvider(randomInteger(2, 8)))
                 .add(WisieStat.ENERGY_MAX, new ConstStatValueProvider(energyMax))
                 .add(WisieStat.ENERGY_START, new ConstStatValueProvider(randomInteger(0, energyMax)))
                 .add(WisieStat.ENERGY_REGEN, new ConstStatValueProvider(randomInteger(1, 2)))

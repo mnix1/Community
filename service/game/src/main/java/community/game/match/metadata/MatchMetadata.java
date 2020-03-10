@@ -5,7 +5,7 @@ import community.game.match.Board;
 import java.time.Instant;
 
 public class MatchMetadata {
-    private final Instant start = Instant.now();
+    private final Instant created = Instant.now();
     private final Players players;
     private final Board board;
 
@@ -14,8 +14,8 @@ public class MatchMetadata {
         this.board = board;
     }
 
-    public Instant getStart() {
-        return start;
+    public Instant getCreated() {
+        return created;
     }
 
     public Players getPlayers() {

@@ -51,7 +51,7 @@ public class TestMatchBuilder {
     Match build() {
         MatchMetadata metadata = new MatchMetadata(new Players(main, opponent), new Board());
         MatchState state = new MatchState(metadata);
-        contestantStates.forEach(state::addContestantState);
+        contestantStates.forEach(state::addContestant);
         return new Match(Id.random(), state, metadata);
     }
 }

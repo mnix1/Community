@@ -5,5 +5,4 @@ import community.game.match.state.MatchState;
 
 public interface StateChanger {
     void apply(MatchState state, MatchMetadata metadata);
-
 }
