@@ -13,7 +13,7 @@ public class IncrementTick implements StateChanger {
     }
 
     private void regenEnergyAndHealth(MatchState state, MatchMetadata metadata) {
-        state.getContestantStates()
+        state.allContestants()
                 .forEach(c -> {
                     Args args = new Args(c, state, metadata);
                     int maxEnergy = c.getWisie().getBaseStats().get(WisieStat.ENERGY_MAX).get(args);

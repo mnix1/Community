@@ -29,7 +29,7 @@ public class DefaultInteractionController implements InteractionController {
     }
 
     private Optional<ContestantState> findOpponentToAttack(Args args) {
-        return args.getState().getContestantStates().stream()
+        return args.getState().allContestants().stream()
                 .filter(c -> !c.getPlayer().getId().equals(args.getSource().getPlayer().getId()))
                 .map(c -> Tuples.of(c, args.getSource().getPosition().distance(c.getPosition())))
                 .filter(t -> t.getT2() <= args.getSource().getWisie().getBaseStats().get(WisieStat.ATTACK_RANGE).get(args))

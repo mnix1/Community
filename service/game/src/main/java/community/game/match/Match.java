@@ -11,7 +11,7 @@ import java.util.List;
 
 public class Match {
     private final Id id;
-    private final List<StateChanger> allStateChangers = new ArrayList<>();
+    private final List<List<StateChanger>> allStateChangers = new ArrayList<>();
     private final MatchState state;
     private final MatchMetadata metadata;
 
@@ -24,14 +24,14 @@ public class Match {
     public void nextTick() {
         List<StateChanger> changers = new NextTickChangers().get();
         execute(changers);
-        allStateChangers.addAll(changers);
+        allStateChangers.add(changers);
     }
 
     public void play(Id playerId) {
 
     }
 
-    private void execute(List<StateChanger> changers) {
+    public void execute(List<StateChanger> changers) {
         changers.forEach(s -> s.apply(state, metadata));
     }
 
@@ -45,5 +45,9 @@ public class Match {
 
     public Id getId() {
         return id;
+    }
+
+    public List<List<StateChanger>> getAllStateChangers() {
+        return allStateChangers;
     }
 }

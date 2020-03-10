@@ -1,20 +1,28 @@
 package community.game.match.metadata;
 
+import community.game.match.Board;
+
 import java.time.Instant;
 
 public class MatchMetadata {
-    private final Instant startInstant = Instant.now();
+    private final Instant start = Instant.now();
     private final Players players;
+    private final Board board;
 
-    public MatchMetadata(Players players) {
+    public MatchMetadata(Players players, Board board) {
         this.players = players;
+        this.board = board;
+    }
+
+    public Instant getStart() {
+        return start;
     }
 
     public Players getPlayers() {
         return players;
     }
 
-    public Instant getStartInstant() {
-        return startInstant;
+    public Board getBoard() {
+        return board;
     }
 }

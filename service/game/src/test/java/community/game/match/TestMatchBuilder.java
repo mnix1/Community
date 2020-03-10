@@ -49,7 +49,7 @@ public class TestMatchBuilder {
     }
 
     Match build() {
-        MatchMetadata metadata = new MatchMetadata(new Players(main, opponent));
+        MatchMetadata metadata = new MatchMetadata(new Players(main, opponent), new Board());
         MatchState state = new MatchState(metadata);
         contestantStates.forEach(state::addContestantState);
         return new Match(Id.random(), state, metadata);

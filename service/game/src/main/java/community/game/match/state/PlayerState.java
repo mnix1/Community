@@ -11,4 +11,12 @@ public class PlayerState {
         this.id = player.getId();
         this.energy = player.getMaxEnergy();
     }
+
+    public Id getId() {
+        return id;
+    }
+
+    public int getEnergy() {
+        return energy;
+    }
 }

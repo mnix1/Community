@@ -22,7 +22,7 @@ public class MatchService implements MatchCreator {
     @Override
     public Match create(Id main, Id opponent) {
         Players players = new Players(playerProvider.get(main, true), playerProvider.get(opponent, false));
-        MatchMetadata metadata = new MatchMetadata(players);
+        MatchMetadata metadata = new MatchMetadata(players, new Board());
         MatchState state = new MatchState(metadata);
         Match match = new Match(Id.random(), state, metadata);
         matches.put(match.getId(), match);

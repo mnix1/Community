@@ -19,4 +19,8 @@ public class WisieBaseStats {
         baseStats.put(stat, provider);
         return this;
     }
+
+    public Map<WisieStat, StatValueProvider> getBaseStats() {
+        return baseStats;
+    }
 }

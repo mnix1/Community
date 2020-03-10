@@ -12,9 +12,9 @@ import java.util.List;
 public class PlayContestant implements StateChanger {
     @Override
     public void apply(MatchState state, MatchMetadata metadata) {
-        state.getContestantStates()
+        state.allContestants()
                 .forEach(c -> {
-                    InteractionController controller = InteractionProvider.findController(c.getWisie().getType(), metadata.getStartInstant());
+                    InteractionController controller = InteractionProvider.findController(c.getWisie().getType(), metadata.getStart());
                     Args args = new Args(c, state, metadata);
                     List<Interaction> interactions = controller.interactions(args);
                     interactions.forEach(interaction -> interaction.invoke(args));
