@@ -2,8 +2,9 @@ package community.game.match.state;
 
 import community.game.Id;
 import community.game.NotFoundException;
-import community.game.match.metadata.MatchMetadata;
+import community.game.match.Match;
 import community.game.match.metadata.Player;
+import community.game.match.metadata.PlayerStat;
 
 import java.util.Collection;
 import java.util.HashMap;
@@ -16,8 +17,15 @@ public class MatchState {
     private final Map<Id, PlayerState> players;
     private int tick = 0;
 
-    public MatchState(MatchMetadata metadata) {
-        this.players = metadata.getPlayers().all().stream().collect(Collectors.toMap(Player::getId, PlayerState::new));
+    public MatchState(Match match) {
+        this.players = match.getMetadata().getPlayers().all().stream().collect(
+                Collectors.toMap(
+                        Player::getId,
+                        p -> new PlayerState(p)
+                                .energy(p.getStats().get(PlayerStat.ENERGY_START).get(null, match))
+                                .health(p.getStats().get(PlayerStat.HEALTH_START).get(null, match))
+                )
+        );
     }
 
     public Optional<ContestantState> findContestant(Id id) {

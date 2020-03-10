@@ -1,6 +1,6 @@
 package community.game.match;
 
-import community.game.match.metadata.wisie.stat.ConstStatValueProvider;
+import community.game.match.metadata.wisie.stat.ConstWisieStatValueProvider;
 import community.game.match.metadata.wisie.stat.WisieStat;
 import community.game.match.state.ContestantState;
 import community.game.match.state.Position;
@@ -17,11 +17,11 @@ class MatchTest {
         ContestantState contestantState = matchBuilder.findContestantState(true);
         contestantState.energy(1);
         contestantState.position(new Position(true, 1, 0));
-        contestantState.getWisie().getStats().add(WisieStat.ENERGY_REGEN, new ConstStatValueProvider(2));
-        contestantState.getWisie().getStats().add(WisieStat.ENERGY_MAX, new ConstStatValueProvider(10));
-        contestantState.getWisie().getStats().add(WisieStat.ATTACK_RANGE, new ConstStatValueProvider(-1));
-        contestantState.getWisie().getStats().add(WisieStat.MOVE_ENERGY_COST, new ConstStatValueProvider(1));
-        contestantState.getWisie().getStats().add(WisieStat.MOVE_RANGE, new ConstStatValueProvider(2));
+        contestantState.getWisie().getStats().add(WisieStat.ENERGY_REGEN, new ConstWisieStatValueProvider(2));
+        contestantState.getWisie().getStats().add(WisieStat.ENERGY_MAX, new ConstWisieStatValueProvider(10));
+        contestantState.getWisie().getStats().add(WisieStat.ATTACK_RANGE, new ConstWisieStatValueProvider(-1));
+        contestantState.getWisie().getStats().add(WisieStat.MOVE_ENERGY_COST, new ConstWisieStatValueProvider(1));
+        contestantState.getWisie().getStats().add(WisieStat.MOVE_RANGE, new ConstWisieStatValueProvider(2));
         Match match = matchBuilder.contestantStates(List.of(contestantState)).build();
 
         match.nextTick();
@@ -36,16 +36,16 @@ class MatchTest {
         TestMatchBuilder matchBuilder = new TestMatchBuilder();
         ContestantState mainPlayerContestantState = matchBuilder.findContestantState(true);
         mainPlayerContestantState.energy(100);
-        mainPlayerContestantState.getWisie().getStats().add(WisieStat.ENERGY_MAX, new ConstStatValueProvider(101));
-        mainPlayerContestantState.getWisie().getStats().add(WisieStat.ENERGY_REGEN, new ConstStatValueProvider(1));
-        mainPlayerContestantState.getWisie().getStats().add(WisieStat.ATTACK_ENERGY_COST, new ConstStatValueProvider(101));
-        mainPlayerContestantState.getWisie().getStats().add(WisieStat.ATTACK_RANGE, new ConstStatValueProvider(1000));
-        mainPlayerContestantState.getWisie().getStats().add(WisieStat.ATTACK, new ConstStatValueProvider(5));
+        mainPlayerContestantState.getWisie().getStats().add(WisieStat.ENERGY_MAX, new ConstWisieStatValueProvider(101));
+        mainPlayerContestantState.getWisie().getStats().add(WisieStat.ENERGY_REGEN, new ConstWisieStatValueProvider(1));
+        mainPlayerContestantState.getWisie().getStats().add(WisieStat.ATTACK_ENERGY_COST, new ConstWisieStatValueProvider(101));
+        mainPlayerContestantState.getWisie().getStats().add(WisieStat.ATTACK_RANGE, new ConstWisieStatValueProvider(1000));
+        mainPlayerContestantState.getWisie().getStats().add(WisieStat.ATTACK, new ConstWisieStatValueProvider(5));
         ContestantState opponentPlayerContestantState = matchBuilder.findContestantState(false);
         opponentPlayerContestantState.health(6);
-        opponentPlayerContestantState.getWisie().getStats().add(WisieStat.HEALTH_MAX, new ConstStatValueProvider(10));
-        opponentPlayerContestantState.getWisie().getStats().add(WisieStat.HEALTH_REGEN, new ConstStatValueProvider(1));
-        opponentPlayerContestantState.getWisie().getStats().add(WisieStat.DEFEND, new ConstStatValueProvider(1));
+        opponentPlayerContestantState.getWisie().getStats().add(WisieStat.HEALTH_MAX, new ConstWisieStatValueProvider(10));
+        opponentPlayerContestantState.getWisie().getStats().add(WisieStat.HEALTH_REGEN, new ConstWisieStatValueProvider(1));
+        opponentPlayerContestantState.getWisie().getStats().add(WisieStat.DEFEND, new ConstWisieStatValueProvider(1));
         Match match = matchBuilder.contestantStates(List.of(mainPlayerContestantState, opponentPlayerContestantState)).build();
 
         match.nextTick();
@@ -60,19 +60,19 @@ class MatchTest {
         ContestantState mainPlayerContestantState = matchBuilder.findContestantState(true);
         mainPlayerContestantState.energy(1);
         mainPlayerContestantState.position(new Position(true, 1, 0));
-        mainPlayerContestantState.getWisie().getStats().add(WisieStat.ENERGY_REGEN, new ConstStatValueProvider(1));
-        mainPlayerContestantState.getWisie().getStats().add(WisieStat.ATTACK_ENERGY_COST, new ConstStatValueProvider(3));
-        mainPlayerContestantState.getWisie().getStats().add(WisieStat.ATTACK, new ConstStatValueProvider(3));
-        mainPlayerContestantState.getWisie().getStats().add(WisieStat.MOVE_ENERGY_COST, new ConstStatValueProvider(3));
+        mainPlayerContestantState.getWisie().getStats().add(WisieStat.ENERGY_REGEN, new ConstWisieStatValueProvider(1));
+        mainPlayerContestantState.getWisie().getStats().add(WisieStat.ATTACK_ENERGY_COST, new ConstWisieStatValueProvider(3));
+        mainPlayerContestantState.getWisie().getStats().add(WisieStat.ATTACK, new ConstWisieStatValueProvider(3));
+        mainPlayerContestantState.getWisie().getStats().add(WisieStat.MOVE_ENERGY_COST, new ConstWisieStatValueProvider(3));
         ContestantState opponentPlayerContestantState = matchBuilder.findContestantState(false);
         opponentPlayerContestantState.health(6);
         opponentPlayerContestantState.energy(5);
-        opponentPlayerContestantState.getWisie().getStats().add(WisieStat.ENERGY_MAX, new ConstStatValueProvider(6));
-        opponentPlayerContestantState.getWisie().getStats().add(WisieStat.ENERGY_REGEN, new ConstStatValueProvider(2));
-        opponentPlayerContestantState.getWisie().getStats().add(WisieStat.HEALTH_REGEN, new ConstStatValueProvider(0));
-        opponentPlayerContestantState.getWisie().getStats().add(WisieStat.DEFEND, new ConstStatValueProvider(0));
-        opponentPlayerContestantState.getWisie().getStats().add(WisieStat.MOVE_ENERGY_COST, new ConstStatValueProvider(7));
-        opponentPlayerContestantState.getWisie().getStats().add(WisieStat.ATTACK_ENERGY_COST, new ConstStatValueProvider(7));
+        opponentPlayerContestantState.getWisie().getStats().add(WisieStat.ENERGY_MAX, new ConstWisieStatValueProvider(6));
+        opponentPlayerContestantState.getWisie().getStats().add(WisieStat.ENERGY_REGEN, new ConstWisieStatValueProvider(2));
+        opponentPlayerContestantState.getWisie().getStats().add(WisieStat.HEALTH_REGEN, new ConstWisieStatValueProvider(0));
+        opponentPlayerContestantState.getWisie().getStats().add(WisieStat.DEFEND, new ConstWisieStatValueProvider(0));
+        opponentPlayerContestantState.getWisie().getStats().add(WisieStat.MOVE_ENERGY_COST, new ConstWisieStatValueProvider(7));
+        opponentPlayerContestantState.getWisie().getStats().add(WisieStat.ATTACK_ENERGY_COST, new ConstWisieStatValueProvider(7));
         Match match = matchBuilder.contestantStates(List.of(mainPlayerContestantState, opponentPlayerContestantState)).build();
 
         match.nextTick();

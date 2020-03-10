@@ -23,8 +23,7 @@ public class MatchService implements MatchCreator {
     public Match create(Id main, Id opponent) {
         Players players = new Players(playerProvider.get(main, true), playerProvider.get(opponent, false));
         MatchMetadata metadata = new MatchMetadata(players, new Board());
-        MatchState state = new MatchState(metadata);
-        Match match = new Match(Id.random(), state, metadata);
+        Match match = new Match(Id.random(), metadata);
         matches.put(match.getId(), match);
         return match;
     }

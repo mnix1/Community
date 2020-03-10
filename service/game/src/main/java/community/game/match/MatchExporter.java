@@ -3,9 +3,11 @@ package community.game.match;
 import com.google.gson.Gson;
 import community.game.match.metadata.MatchMetadata;
 import community.game.match.metadata.Player;
+import community.game.match.metadata.PlayerStat;
+import community.game.match.metadata.PlayerStatValueProvider;
 import community.game.match.metadata.wisie.Wisie;
-import community.game.match.metadata.wisie.stat.StatValueProvider;
 import community.game.match.metadata.wisie.stat.WisieStat;
+import community.game.match.metadata.wisie.stat.WisieStatValueProvider;
 import community.game.match.state.ContestantState;
 import community.game.match.state.MatchState;
 import community.game.match.state.PlayerState;
@@ -22,7 +24,7 @@ public class MatchExporter {
     private final List<StateChanged> stateChanges;
 
     public MatchExporter(Match match) {
-        this.match = new Match(match.getId(), new MatchState(match.getMetadata()), match.getMetadata());
+        this.match = new Match(match.getId(), match.getMetadata());
         this.stateChanges = match.getStateChanges();
     }
 
@@ -45,7 +47,7 @@ public class MatchExporter {
     }
 
     private List<Map<String, ?>> playerStates(Collection<PlayerState> playerStates) {
-        return playerStates.stream().map(p -> Map.of("id", p.getPlayer().getId().toString(), "energy", p.getEnergy())).collect(Collectors.toList());
+        return playerStates.stream().map(p -> Map.of("id", p.getPlayer().getId().toString(), "energy", p.getEnergy(), "health", p.getHealth())).collect(Collectors.toList());
     }
 
     private List<Map<String, ?>> contestantStates(Collection<ContestantState> contestantStates) {
@@ -57,16 +59,24 @@ public class MatchExporter {
     }
 
     private List<Map<String, Object>> players(Collection<Player> players) {
-        return players.stream().map(p -> Map.of("id", p.getId().toString(), "teamId", p.getTeamId(), "main", p.isMain(), "maxEnergy", p.getEnergyMax(), "startEnergy", p.getEnergyStart(), "wisies", wisies(p.allWisies()))).collect(Collectors.toList());
+        return players.stream().map(p -> Map.of("id", p.getId().toString(), "teamId", p.getTeamId(), "main", p.isMain(), "stats", playerStats(p.getStats().getStats()), "wisies", wisies(p.allWisies()))).collect(Collectors.toList());
+    }
+
+
+    private Map<Object, Object> playerStats(Map<PlayerStat, PlayerStatValueProvider> stats) {
+        return stats.keySet().stream().collect(Collectors.toMap(w -> w, w -> {
+            PlayerStatValueProvider provider = stats.get(w);
+            return Map.of("type", provider.getType(), "provider", provider);
+        }));
     }
 
     private List<Map<String, Object>> wisies(Collection<Wisie> wisies) {
-        return wisies.stream().map(w -> Map.of("id", w.getId().toString(), "type", w.getType(), "level", w.getLevel(), "baseStats", baseStats(w.getStats().getStats()))).collect(Collectors.toList());
+        return wisies.stream().map(w -> Map.of("id", w.getId().toString(), "type", w.getType(), "level", w.getLevel(), "stats", wisieStats(w.getStats().getStats()))).collect(Collectors.toList());
     }
 
-    private Map<Object, Object> baseStats(Map<WisieStat, StatValueProvider> baseStats) {
-        return baseStats.keySet().stream().collect(Collectors.toMap(w -> w, w -> {
-            StatValueProvider provider = baseStats.get(w);
+    private Map<Object, Object> wisieStats(Map<WisieStat, WisieStatValueProvider> stats) {
+        return stats.keySet().stream().collect(Collectors.toMap(w -> w, w -> {
+            WisieStatValueProvider provider = stats.get(w);
             return Map.of("type", provider.getType(), "provider", provider);
         }));
     }

@@ -21,10 +21,10 @@ public class Match {
     private final MatchState state;
     private final MatchMetadata metadata;
 
-    public Match(Id id, MatchState state, MatchMetadata metadata) {
+    public Match(Id id, MatchMetadata metadata) {
         this.id = id;
-        this.state = state;
         this.metadata = metadata;
+        this.state = new MatchState(this);
     }
 
     public synchronized void nextTick() {

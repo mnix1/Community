@@ -1,5 +1,5 @@
 package community.game.match.metadata.wisie.stat;
 
-public enum  StatValueProviderType {
+public enum WisieStatValueProviderType {
     CONST_VALUE
 }

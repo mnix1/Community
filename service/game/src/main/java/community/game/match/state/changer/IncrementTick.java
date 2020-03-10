@@ -1,6 +1,7 @@
 package community.game.match.state.changer;
 
 import community.game.match.Match;
+import community.game.match.metadata.PlayerStat;
 import community.game.match.metadata.wisie.stat.WisieStat;
 import community.game.match.state.MatchState;
 
@@ -30,9 +31,13 @@ public class IncrementTick implements StateChanger {
     private void regenPlayersEnergyAndHealth(Match match) {
         match.getState().allPlayers()
                 .forEach(p -> {
-                    int maxEnergy = p.getPlayer().getEnergyMax();
+                    int maxEnergy = p.getPlayer().getStats().get(PlayerStat.ENERGY_MAX).get(p, match);
                     if (maxEnergy > p.getEnergy()) {
-                        p.energy(Math.min(maxEnergy, p.getEnergy() + p.getPlayer().getEnergyRegen()));
+                        p.energy(Math.min(maxEnergy, p.getEnergy() + p.getPlayer().getStats().get(PlayerStat.ENERGY_REGEN).get(p, match)));
+                    }
+                    int maxHealth = p.getPlayer().getStats().get(PlayerStat.HEALTH_MAX).get(p, match);
+                    if (maxHealth > p.getHealth()) {
+                        p.health(Math.min(maxHealth, p.getHealth() + p.getPlayer().getStats().get(PlayerStat.HEALTH_REGEN).get(p, match)));
                     }
                 });
     }

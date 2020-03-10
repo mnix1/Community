@@ -5,22 +5,22 @@ import java.util.Map;
 import java.util.Optional;
 
 public class WisieStats {
-    private Map<WisieStat, StatValueProvider> stats = new HashMap<>();
+    private Map<WisieStat, WisieStatValueProvider> stats = new HashMap<>();
 
-    public Optional<StatValueProvider> find(WisieStat stat) {
+    public Optional<WisieStatValueProvider> find(WisieStat stat) {
         return Optional.ofNullable(stats.get(stat));
     }
 
-    public StatValueProvider get(WisieStat stat) {
+    public WisieStatValueProvider get(WisieStat stat) {
         return find(stat).orElseThrow(() -> new WisieStatNotFoundException(stat));
     }
 
-    public WisieStats add(WisieStat stat, StatValueProvider provider) {
+    public WisieStats add(WisieStat stat, WisieStatValueProvider provider) {
         stats.put(stat, provider);
         return this;
     }
 
-    public Map<WisieStat, StatValueProvider> getStats() {
+    public Map<WisieStat, WisieStatValueProvider> getStats() {
         return stats;
     }
 }
